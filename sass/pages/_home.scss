@@ -1,3 +1,28 @@
-// -----------------------------------------------------------------------------
-// This file contains styles that are specific to the home page.
-// -----------------------------------------------------------------------------
+#hero {
+  width: 100%;
+  max-height: 88vh;
+  height: 88vh;
+  margin-top: 12vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,.6)), url('https://source.unsplash.com/random/1600x900/?travel') no-repeat center;
+  background-size: cover;
+}
+
+.hero {
+
+  &__content {
+    display: flex;
+    height: 100%;
+  }
+
+  &__header {
+    margin: auto;
+    color: $text-color-light;
+    font-size: 5rem;
+    font-family: $font-secondary;
+    letter-spacing: 5px;
+  }
+}
+
+.destinations {
+  margin-top: 5rem;
+}

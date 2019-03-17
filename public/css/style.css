@@ -428,10 +428,10 @@ li {
 
 body {
   color: #222222;
-  font: normal 150%/1.4 "Work Sans", sans-serif; }
+  font: normal 150%/1.4 "Montserrat", sans-serif; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Monaco", monospace; }
+  font-family: "Oswald", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Monaco", monospace; }
 
 /**
  * Clear inner floats
@@ -448,12 +448,9 @@ h1, h2, h3, h4, h5, h6 {
  * 3. Leave some space on the edges, especially valuable on small screens
  */
 .container {
-  max-width: 1180px;
+  max-width: 1200px;
   /* 1 */
-  margin-left: auto;
-  /* 2 */
-  margin-right: auto;
-  /* 2 */
+  margin: 0 auto;
   padding-left: 20px;
   /* 3 */
   padding-right: 20px;
@@ -499,7 +496,7 @@ h1, h2, h3, h4, h5, h6 {
   .navbar__navigation, .navbar__social-links {
     display: flex; }
   .navbar__brand {
-    font: normal 2.5rem "Montserrat", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Monaco", monospace;
+    font: normal 2.5rem "Oswald", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Monaco", monospace;
     margin-left: 2rem; }
   .navbar__navigation {
     flex-grow: 1;
@@ -518,3 +515,47 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 3rem;
     padding: 1rem 2rem;
     text-transform: uppercase; }
+
+.region-card {
+  background-color: #0a81ff;
+  width: 100%;
+  display: flex;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 5rem;
+  border-top-right-radius: 10rem; }
+  .region-card:not(:last-child) {
+    margin-bottom: 5rem; }
+  .region-card__header {
+    flex: 1 1 30%; }
+  .region-card__img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem; }
+  .region-card__destinations {
+    flex: 1 1 70%;
+    display: flex;
+    flex-wrap: wrap; }
+  .region-card__title {
+    color: #fff; }
+
+#hero {
+  width: 100%;
+  max-height: 88vh;
+  height: 88vh;
+  margin-top: 12vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url("https://source.unsplash.com/random/1600x900/?travel") no-repeat center;
+  background-size: cover; }
+
+.hero__content {
+  display: flex;
+  height: 100%; }
+
+.hero__header {
+  margin: auto;
+  color: #fff;
+  font-size: 5rem;
+  font-family: "Oswald", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Monaco", monospace;
+  letter-spacing: 5px; }
+
+.destinations {
+  margin-top: 5rem; }

@@ -5,31 +5,42 @@
 
   <%- include('partials/navbar'); %>
 
-  <div id="hero" class="container">
+  <div id="hero" class="hero">
+
+    <div class="hero__content">
+
+      <h1 class="hero__header">Travel Guides</h1>
+
+    </div>
+
+  </div>
+
+  <div class="container">
 
     <section class="destinations">
 
-      <% allRegions.forEach(region => { %>
-
-        <div class="region__card">
-
-          <div class="region__header">
-            <img class="regionImage card-img" src="images/regions/<%= region.image %>.jpg">
-            <p class="regionTitle display-4 card-title"><%= region.name %></p> 
+        <% allRegions.forEach(region => { %>
+    
+          <div class="region-card">
+    
+            <div class="region-card__header">
+              <img class="region-card__img" src="images/regions/<%= region.image %>.jpg">
+              <h1 class="region-card__title"><%= region.name %></h1> 
+            </div>
+    
+            <div class="region-card__destinations">
+              <% region.cities.forEach(city => { %>
+                <div class="destination-card">
+    
+                  <a class="destination-card__link" href="/destinations/<%= city._id %>"><i class="fas fa-flag"></i>&nbsp;<%= city.name %></a>
+                </div>
+              <% }); %>
+            </div>
+    
           </div>
-
-          <div class="region__destinations">
-            <% region.cities.forEach(city => { %>
-              <div class="">
-                <a class="" href="/destinations/<%= city._id %>"><i class="fas fa-flag"></i>&nbsp;<%= city.name %></a>
-              </div>
-            <% }); %>
-          </div>
-
-        </div>
-
-      <% }); %>
-   </section>
+    
+        <% }); %>
+        </section>
 
   </div>
 
