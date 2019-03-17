@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+
+<%- include('../partials/header'); %>
+
+</head>
+
+<body>
+
+  <%- include('../partials/navbar'); %>
+
+  <div class="container basicFormWidth">
+    <h1 class="display-4">Edit -
+      <%= foundDestination.name %>
+    </h1>
+
+    <form action="/destinations/<%= foundDestination._id %>?_method=PUT" method="post">
+      <div class="form-group">
+        <label for="destination[name]">Name</label>
+        <input class="form-control" type="text" name="destination[name]" value="<%= foundDestination.name %>">
+      </div>
+      <div class="form-group">
+        <label for="destination[flag]">Flag</label>
+        <input class="form-control" type="text" name="destination[flag]" value="<%= foundDestination.flag %>">
+      </div>
+      <div class="form-group">
+        <label for="destination[region]">Region</label>
+        <input class="form-control" type="text" name="destination[region]" value="<%= foundDestination.region %>">
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">Update</button>
+    </form>
+  </div>
+
+<% include ../partials/footer %>

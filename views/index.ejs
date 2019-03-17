@@ -1,0 +1,36 @@
+<%- include('partials/header'); %>
+</head>
+
+<body>
+
+  <%- include('partials/navbar'); %>
+
+  <div id="hero" class="container">
+
+    <section class="destinations">
+
+      <% allRegions.forEach(region => { %>
+
+        <div class="region__card">
+
+          <div class="region__header">
+            <img class="regionImage card-img" src="images/regions/<%= region.image %>.jpg">
+            <p class="regionTitle display-4 card-title"><%= region.name %></p> 
+          </div>
+
+          <div class="region__destinations">
+            <% region.cities.forEach(city => { %>
+              <div class="">
+                <a class="" href="/destinations/<%= city._id %>"><i class="fas fa-flag"></i>&nbsp;<%= city.name %></a>
+              </div>
+            <% }); %>
+          </div>
+
+        </div>
+
+      <% }); %>
+   </section>
+
+  </div>
+
+<%- include('partials/footer'); %>

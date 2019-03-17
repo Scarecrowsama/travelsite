@@ -1,0 +1,23 @@
+<%- include('../partials/header'); %>
+
+</head>
+
+<body>
+
+  <%- include('../partials/navbar'); %>
+
+<div class="container-fluid">
+
+  <h1><%= foundDestination.name %></h1>
+
+  <h3>Top 5 Cities in <%= foundDestination.name %></h3>
+
+  <% foundDestination.cities.slice(0, 5).forEach(city => { %>
+    <p><%= city.name %></p>
+  <% }) %>
+
+  <a class="btn btn-primary" href="/destinations/<%= foundDestination._id %>/cities/new">Add a new City to <%= foundDestination.name %></a>
+
+</div>
+
+<%- include('../partials/footer'); %>

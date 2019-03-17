@@ -1,0 +1,41 @@
+body {
+  margin-top: 75px;
+}
+
+#regionsDiv {
+  /* overflow: hidden; */
+}
+
+.basicFormWidth {
+  width: 550px;
+}
+
+.regionContainer {
+  position: relative;
+  overflow: hidden;
+  /* height: 400px; */
+}
+
+.regionHeader {
+  height: 200px;
+}
+
+.regionTitle {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+
+.regionImage {
+  max-width: 100%;
+  /* position: relative; */
+  /* bottom: 50%;
+  z-index: -1; */
+}
+
+.regionDestinations {
+  /* position: relative; */
+  /* z-index: 0; */
+}

@@ -1,0 +1,29 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: $default-link-color;
+  text-decoration: none;
+
+  @include on-event {
+    color: $text-color;
+  }
+}
+
+li {
+  list-style: none;
+}
