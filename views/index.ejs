@@ -24,17 +24,44 @@
           <div class="region-card">
     
             <div class="region-card__header">
-              <img class="region-card__img" src="images/regions/<%= region.image %>.jpg">
-              <h1 class="region-card__title"><%= region.name %></h1> 
+              <img class="region-card__img" src="images/regions/<%= region.image %>.jpg"> 
             </div>
     
             <div class="region-card__destinations">
-              <% region.cities.forEach(city => { %>
+              <% region.countries.forEach(country => { %>
                 <div class="destination-card">
-    
-                  <a class="destination-card__link" href="/destinations/<%= city._id %>"><i class="fas fa-flag"></i>&nbsp;<%= city.name %></a>
+                  <div class="destination-card__head">
+                    <a class="destination-card__link" href="/destinations/<%= country._id %>"><%= country.name %></a>
+                    <img src="https://source.unsplash.com/random/40x40/?flag" alt="" class="destination-card__img">
+                  </div>
+
+                  <div class="destination-card__cities">
+                    <ul>
+                      <% country.cities.forEach(city => { %>
+                        <li><%= country.cities %></li>
+                      <% }); %>
+                    </ul>
+                  </div>
+
+                  <div class="destination-card__actions">
+                    <ul class="">
+                      <li>Video</li>
+                      <li>Action</li>
+                      <li>Action</li>
+                    </ul>
+                  </div>
+
+                  <div class="destination-card__stars">
+                    Stars
+                  </div>
                 </div>
               <% }); %>
+            </div>
+
+            <div class="region-card__footer">
+              <h1 class="region-card__title"><%= region.name %></h1>
+              <p>Stars</p>
+              <p>Airlines</p>
             </div>
     
           </div>

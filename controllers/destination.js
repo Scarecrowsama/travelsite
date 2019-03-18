@@ -1,5 +1,5 @@
 const Destination   = require('../models/destination');
-const Regions       = require('../models/regions');
+const Regions       = require('../models/region');
 
 exports.destinations_get_all = (req, res, next) => {
   Destination.find({})

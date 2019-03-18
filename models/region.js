@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const regions = new mongoose.Schema({
+const region = new mongoose.Schema({
   name: String,
   image: String,
-  cities: [
+  countries: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Destination'
@@ -11,4 +11,4 @@ const regions = new mongoose.Schema({
   ]
 });
 
-module.exports = mongoose.model('Regions', regions);
+module.exports = mongoose.model('Region', region);

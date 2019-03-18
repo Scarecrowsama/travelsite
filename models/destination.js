@@ -7,7 +7,10 @@ const destination = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  region: String,
+  region: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Region'
+  },
   cities: [
     {
       type: mongoose.Schema.Types.ObjectId,
