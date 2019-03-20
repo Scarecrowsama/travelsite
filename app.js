@@ -6,6 +6,7 @@ const path              = require('path');
 const app               = express();
 
 mongoose.connect('mongodb://localhost/travelguides', {useNewUrlParser: true});
+mongoose.set('debug', true);
 app.disable('x-powered-by'); //Blocks header for containing information about the server.
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');

@@ -38,9 +38,11 @@ exports.destinations_show = (req, res, next) => {
 exports.destinations_create = (req, res) => {
   Destination.create(req.body.destination)
   .then(newDestination => {
-    Regions.findOne({name: newDestination.region})
+    Regions.findOne({name: req.body.region.name})
     .then(foundRegion => {
-      foundRegion.cities.push(newDestination._id);
+      newDestination.region = foundRegion._id;
+      newDestination.save();
+      foundRegion.countries.push(newDestination._id);
       foundRegion.save();
     });
     res.redirect('/destinations');

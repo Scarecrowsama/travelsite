@@ -26,6 +26,6 @@ const city = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Rating'
   }
-});
+}, {strict: true});
 
 module.exports = mongoose.model('City', city);
