@@ -1,12 +1,13 @@
 .navbar {
-  background-color: $blue-primary;
-  // max-width: 100vw;
-  height: 12vh;
+  background-color: $background-secondary;
+  height: 7vh;
   display: flex;
   align-items: center;
   position: fixed;
   top: 0;
   width: 100%;
+  box-shadow: 0 1px 5px rgba($dark-grey, 0.5);
+  z-index: 10;
 
   &__navigation,
   &__social-links {
@@ -15,14 +16,15 @@
 
   &__brand {
     font: normal 2.5rem $font-secondary;
+    color: #1ea896;
     margin-left: 2rem;
   }
 
   &__navigation {
     flex-grow: 1;
     margin-left: 4rem;
-    background-color: #1983fc;
-    padding: 1.5rem 2.5rem;
+    // background-color: #00e676;
+    padding: 0 2rem;
     border-radius: 3rem;
   }
 
@@ -41,9 +43,8 @@
   &__link {
 
     @include link-basic {
-      background-color: $blue-secondary;
-      border-radius: 3rem;
-      padding: 1rem 2rem;
+      padding: 0 1rem;
+      font-size: 1.2rem;
       text-transform: uppercase;
     }
   }

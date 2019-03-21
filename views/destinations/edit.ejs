@@ -24,7 +24,12 @@
       </div>
       <div class="form-group">
         <label for="destination[region]">Region</label>
-        <input class="form-control" type="text" name="destination[region]" value="<%= foundDestination.region %>">
+        <select class="form-control mb-4" name="region[name]]">
+          <option selected disabled hidden>Choose a region</option>
+          <% allRegions.forEach(region => { %>
+            <option value="<%= region.name %>"><%= region.name %></option>
+          <% }); %>
+        </select>
       </div>
       <button class="btn btn-primary btn-block" type="submit">Update</button>
     </form>

@@ -8,12 +8,11 @@ router.route('/')
 
 router.get('/new', destinationsController.destinations_new);
 
-router.get('/:id', destinationsController.destinations_show);
+router.route('/:id')
+  .get(destinationsController.destinations_show)
+  .put(destinationsController.destinations_update) 
+  .delete(destinationsController.destinations_delete);
 
 router.get('/:id/edit', destinationsController.destinations_edit);
-
-router.put('/:id', destinationsController.destinations_update);
-
-router.delete('/:id', destinationsController.destinations_delete);
 
 module.exports = router;

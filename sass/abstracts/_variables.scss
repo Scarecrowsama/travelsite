@@ -1,17 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald:700|Montserrat:300');
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700|Montserrat:400');
 
 $font-primary: 'Montserrat', sans-serif !default;
-$font-secondary: 'Oswald', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+$font-secondary: 'Oswald',  monospace !default;
 
-$blue-primary: #007bff;
-$blue-secondary: #0a81ff;
+$color-primary: #0bc9cd;
+$color-secondary: #1d8a99;
+$color-dark: #0F0A0A;
+// $color-dark: #086788;
 $text-color: rgb(34, 34, 34) !default;
 $text-color-light: #fff;
-$brand-color: rgb(229, 0, 80) !default;
 $light-grey: rgb(237, 237, 237) !default;
 $mid-grey: rgb(153, 153, 153) !default;
-$dark-grey: rgb(68, 68, 68) !default;
-$default-link-color: #fff !default;
+$dark-grey: #4c5454 !default;
+$default-link-color: #ff715b !default;
+// $background-primary: #CFFCFF;
+$background-primary: rgb(245, 245, 245);
+$background-secondary: #e8f4ff;
 
 $max-width: 1200px !default;
 
@@ -21,8 +25,4 @@ $breakpoints: (
   'large': 1024px,
 ) !default;
 
-/// Relative or absolute URL where all assets are served from
-/// @type String
-/// @example scss - When using a CDN
-///   $base-url: 'http://cdn.example.com/assets/';
-$base-url: '/assets/' !default;
+$base-url: '/public/' !default;

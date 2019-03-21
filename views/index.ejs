@@ -9,7 +9,7 @@
 
     <div class="hero__content">
 
-      <h1 class="hero__header">Travel Guides</h1>
+      <h1 class="hero__header"><i class="fas fa-globe-americas"></i>&nbsp;Travel Guides</h1>
 
     </div>
 
@@ -24,42 +24,45 @@
           <div class="region-card">
     
             <div class="region-card__header">
-              <img class="region-card__img" src="images/regions/<%= region.image %>.jpg"> 
+              <h1 class="region-card__heading"><%= region.name %></h1>
             </div>
     
             <div class="region-card__destinations">
-              <% region.countries.forEach(country => { %>
-                <div class="destination-card">
+              <% region.countries.forEach((country, index) => { %>
+
+                <div class="destination-card destination-card--<%= index %>">
                   <div class="destination-card__head">
                     <a class="destination-card__link" href="/destinations/<%= country._id %>"><%= country.name %></a>
-                    <img src="https://source.unsplash.com/random/40x40/?flag" alt="" class="destination-card__img">
+                    <img src="https://source.unsplash.com/random/500x400/?travel" alt="" class="destination-card__img">
                   </div>
 
                   <div class="destination-card__cities">
-                    <ul>
+                    <ul class="destination-card__cities--list">
                       <% country.cities.forEach(city => { %>
-                        <li><%= city.name %></li>
+                        <li class="destination-card__cities--city">&raquo;&nbsp;<%= city.name %></li>
                       <% }); %>
                     </ul>
                   </div>
 
                   <div class="destination-card__actions">
-                    <ul class="">
-                      <li>Video</li>
-                      <li>Action</li>
-                      <li>Action</li>
+                    <ul class="destination-card__actions--list">
+                      <li><i class="fab fa-youtube"></i></li>
+                      <li><i class="fas fa-share-alt"></i></li>
+                      <li><i class="far fa-heart"></i></li>
                     </ul>
                   </div>
 
                   <div class="destination-card__stars">
-                    Stars
+                    <% for(i = 0; i < 5; i++) { %>
+                      <i class="fas fa-star"></i>
+                    <% } %>
                   </div>
                 </div>
+
               <% }); %>
             </div>
 
             <div class="region-card__footer">
-              <h1 class="region-card__title"><%= region.name %></h1>
               <p>Stars</p>
               <p>Airlines</p>
             </div>
