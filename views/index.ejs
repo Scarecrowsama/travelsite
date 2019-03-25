@@ -33,7 +33,7 @@
                 <div class="destination-card destination-card--<%= index %>">
                   <div class="destination-card__head">
                     <a class="destination-card__link" href="/destinations/<%= country._id %>"><%= country.name %></a>
-                    <img src="https://source.unsplash.com/random/500x400/?travel" alt="" class="destination-card__img">
+                    <img src="https://source.unsplash.com/random/450x300/?sig=<%= index %>&travel" alt="" class="destination-card__img">
                   </div>
 
                   <div class="destination-card__cities">
@@ -46,17 +46,17 @@
 
                   <div class="destination-card__actions">
                     <ul class="destination-card__actions--list">
-                      <li><i class="fab fa-youtube"></i></li>
-                      <li><i class="fas fa-share-alt"></i></li>
-                      <li><i class="far fa-heart"></i></li>
+                      <li class="destination-card__stars">
+                        <% for(i = 0; i < 5; i++) { %>
+                          <i class="fas fa-star"></i>
+                        <% } %>
+                      </li>
+                      <li><a href="#" class="white-link"><i class="fab fa-youtube"></i></a></li>
+                      <li><a href="#" class="white-link"><i class="fas fa-share-alt"></i></a></li>
+                      <li><a href="#" class="white-link"><i class="far fa-heart"></i></a></li>
                     </ul>
                   </div>
 
-                  <div class="destination-card__stars">
-                    <% for(i = 0; i < 5; i++) { %>
-                      <i class="fas fa-star"></i>
-                    <% } %>
-                  </div>
                 </div>
 
               <% }); %>

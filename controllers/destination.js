@@ -4,28 +4,23 @@ const Regions       = require('../models/region');
 exports.destinations_get_all = async (req, res, next) => {
 
   try {
+    console.time('Query');
+    //Assign to a variable alldestionations that meet the query criteria.
     const allDestinations = await Destination.find({})
+    //Select only specific fields from eac collection.
     .select('_id name region cities rating')
-    .populate('cities')
+    //Populate the cities field for each destination.
+    .populate('cities', 'name rating')
+    //Sort the results by region ascendingly.
     .sort({'region': 'ascending'})
-    res.render('destinations/destinations', {allDestinations: allDestinations, pageTitle: ''});
+    //Render destinations page passing all data.
+    console.timeEnd('Query');
+    res.render('destinations/destinations', {allDestinations: allDestinations, pageTitle: 'All Destinations'});
   } catch(err) {
     err.status = 404;
     err.message = 'There are no destinations available.';
     next(err);
   }
-  // Destination.find({})
-  // .select('_id name region cities rating')
-  // .populate('cities')
-  // .sort({'region': 'ascending'})
-  // .then(allDestinations => {
-  //   res.render('destinations/destinations', {allDestinations: allDestinations, pageTitle: ''});
-  // })
-  // .catch(err => {
-  //   err.status = 404;
-  //   err.message = 'There are no destinations available.';
-  //   next(err);
-  // });
 }
 
 exports.destinations_new = (req, res) => {
@@ -45,44 +40,25 @@ exports.destinations_show = async (req, res, next) => {
     err.message = 'The requested destination does not exist.';
     next(err);
   }
-  // Destination.findById(req.params.id)
-  // .select('name flag region cities')
-  // .populate('cities')
-  // .then(foundDestination => {
-  //   res.render('destinations/show', {foundDestination: foundDestination, pageTitle: ''});
-  // })
-  // .catch(err => {
-  //   err.status = 404;
-  //   err.message = 'The requested destination does not exist.';
-  //   next(err);
-  // });
 }
 
-exports.destinations_create = async (req, res) => {
+exports.destinations_create = async (req, res, next) => {
 
   try {
+    //Create new destination.
     const newDestination = await Destination.create(req.body.destination);
+    //Find destination's region.
     const foundRegion = await Regions.findOne({name: req.body.region.name});
+    //Assign a value to the destination's region and then save it.
     newDestination.region = foundRegion._id;
     newDestination.save();
+    //Add the new destination's id to the region's countries array and then save it.
     foundRegion.countries.push(newDestination._id);
     foundRegion.save();
     res.redirect('/destinations');
   } catch(err) {
-    res.redirect('/');
+    next(err);
   }
-  // Destination.create(req.body.destination)
-  // .then(newDestination => {
-  //   Regions.findOne({name: req.body.region.name})
-  //   .then(foundRegion => {
-  //     newDestination.region = foundRegion._id;
-  //     newDestination.save();
-  //     foundRegion.countries.push(newDestination._id);
-  //     foundRegion.save();
-  //   });
-  //   res.redirect('/destinations');
-  // })
-  // .catch(err => res.redirect('/'));
 }
 
 exports.destinations_edit = (req, res) => {

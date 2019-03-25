@@ -7,8 +7,8 @@ const city = new mongoose.Schema({
     default: Date.now
   },
   country: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Destination'
+    id: { type: mongoose.Schema.Types.ObjectId, name: 'Destination' }, 
+    name: String
   },
   attractions: [
     {
@@ -22,9 +22,9 @@ const city = new mongoose.Schema({
       ref: 'Restaurant'
     }
   ],
-  rating: {
+  rating: { 
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Rating'
+    ref: 'Rating' 
   }
 }, {strict: true});
 
