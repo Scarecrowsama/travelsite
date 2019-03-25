@@ -17,7 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./routes/index'));
 app.use('/destinations', require('./routes/destinations'));
-app.use(require('./routes/cities'));
+app.use('/destinations', require('./routes/cities'));
+app.use('/destinations', require('./routes/attractions'));
 
 app.use((req, res, next) => {
   const error = new Error('The requested page does not exist.');

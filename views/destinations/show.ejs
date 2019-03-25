@@ -12,9 +12,11 @@
 
   <h3>Top 5 Cities in <%= foundDestination.name %></h3>
 
-  <% foundDestination.cities.slice(0, 5).forEach(city => { %>
-    <p><%= city.name %></p>
-  <% }) %>
+  <ul>
+    <% foundDestination.cities.slice(0, 5).forEach(city => { %>
+      <li><a href="<%= foundDestination._id %>/cities/<%= city._id %>"><%= city.name %></a></li>
+    <% }) %>
+  </ul>
 
   <a class="btn btn-primary" href="/destinations/<%= foundDestination._id %>/cities/new">Add a new City to <%= foundDestination.name %></a>
 

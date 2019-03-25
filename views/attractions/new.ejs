@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+<%- include('../partials/header'); %>
+
+</head>
+
+<body>
+
+  <%- include('../partials/navbar'); %>
+
+    <div class="container basicFormWidth" id="newAttractionContainer">
+
+      <h1>Add New Attraction to <%= foundCity.name %></h1>
+
+      <form action="/destinations/<%= foundCity.country.id %>/cities/<%= foundCity._id %>/attractions/new" method="POST">
+        <div class="form-group">
+            <label for="attraction[name]">Name:</label>
+            <input class="form-control" type="text" name="attraction[name]" placeholder="Attraction name..."><br>
+            <label for="attraction[description]">Description:</label>
+            <textarea name="attraction[description]" cols="30" rows="10"></textarea>
+            <input type="hidden" name=city[id] value="<%= foundCity._id %>">
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Add</button>
+      </form>
+
+    </div>
+
+<% include ../partials/footer %>
