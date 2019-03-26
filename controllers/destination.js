@@ -10,12 +10,12 @@ exports.destinations_get_all = async (req, res, next) => {
     //Select only specific fields from eac collection.
     .select('_id name region cities rating')
     //Populate the cities field for each destination.
-    .populate('cities', 'name rating')
+    .populate('region cities', 'name rating')
     //Sort the results by region ascendingly.
     .sort({'region': 'ascending'})
     //Render destinations page passing all data.
     console.timeEnd('Query');
-    res.render('destinations/destinations', {allDestinations: allDestinations, pageTitle: 'All Destinations'});
+    res.render('destinations/destinations', {allDestinations: allDestinations, pageTitle: 'See all our Destinations'});
   } catch(err) {
     err.status = 404;
     err.message = 'There are no destinations available.';
