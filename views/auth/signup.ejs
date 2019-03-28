@@ -1,0 +1,24 @@
+<%- include('../partials/header'); %>
+</head>
+
+<body>
+
+  <%- include('../partials/navbar'); %>
+
+  <div class="container">
+
+    <h1>Login</h1>
+
+    <form action="/signup" method="POST">
+      <label for="email">E-mail</label>
+      <input type="email" name="email"><br>
+      <label for="password[pass1]">Password</label>
+      <input type="password" name="password[pass1]"><br>
+      <label for="password[pass2]">Confirm Password</label>
+      <input type="password" name="password[pass2]"><br>
+      <button type="submit">Sign Up!</button>
+    </form>
+
+  </div>
+
+<%- include('../partials/footer'); %>
