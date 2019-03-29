@@ -19,6 +19,7 @@
             <label for="attraction[description]">Description:</label>
             <textarea name="attraction[description]" cols="30" rows="10"></textarea>
             <input type="hidden" name=city[id] value="<%= foundCity._id %>">
+            <input type="hidden" value="<%= csrfToken %>" name="_csrf">
         </div>
         <button class="btn btn-primary btn-block" type="submit">Add</button>
       </form>

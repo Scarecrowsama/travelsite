@@ -8,12 +8,15 @@
   <div class="container">
 
     <h1>Login</h1>
-
+    <% if(errorMessage) { %>
+      <h2><%= errorMessage %></h2>
+    <% } %>
     <form action="/login" method="POST">
       <label for="user[email]">E-mail</label>
       <input type="email" name="user[email]"><br>
       <label for="user[password]">Password</label>
       <input type="password" name="user[password]"><br>
+      <input type="hidden" value="<%= csrfToken %>" name="_csrf">
       <button type="submit">Login</button>
     </form>
 

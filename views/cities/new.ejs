@@ -17,6 +17,7 @@
             <label for="city[name]">Name:</label>
             <input class="form-control" type="text" name="city[name]" placeholder="City name...">
             <input type="hidden" name=country[id] value="<%= foundDestination._id %>">
+            <input type="hidden" value="<%= csrfToken %>" name="_csrf">
         </div>
         <button class="btn btn-primary btn-block" type="submit">Add</button>
       </form>

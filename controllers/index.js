@@ -17,7 +17,7 @@ exports.index_view_all = async (req, res, next) => {
         options: { sort: { name: 1 }}
       }});
     console.timeEnd('Counter');
-    res.render('index', {allRegions: allRegions, pageTitle: 'Travel Guides'});
+    res.render('index', { allRegions: allRegions, pageTitle: 'Travel Guides' });
   } catch(err) {
     err.status = 404;
     err.message = 'Something went wrong.';

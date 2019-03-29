@@ -2,7 +2,6 @@ const Destination   = require('../models/destination');
 const Regions       = require('../models/region');
 
 exports.destinations_get_all = async (req, res, next) => {
-
   try {
     console.time('Query');
     //Assign to a variable alldestionations that meet the query criteria.
@@ -15,7 +14,7 @@ exports.destinations_get_all = async (req, res, next) => {
     .sort({'region': 'ascending'})
     //Render destinations page passing all data.
     console.timeEnd('Query');
-    res.render('destinations/destinations', {allDestinations: allDestinations, pageTitle: 'See all our Destinations'});
+    res.render('destinations/destinations', { allDestinations: allDestinations, pageTitle: 'See all our Destinations' });
   } catch(err) {
     err.status = 404;
     err.message = 'There are no destinations available.';
@@ -43,7 +42,6 @@ exports.destinations_show = async (req, res, next) => {
 }
 
 exports.destinations_create = async (req, res, next) => {
-
   try {
     //Create new destination.
     const newDestination = await Destination.create(req.body.destination);
