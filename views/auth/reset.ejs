@@ -7,20 +7,16 @@
 
   <div class="container">
 
-    <h1>Login</h1>
+    <h1>Reset Password</h1>
     <% if(errorMessage) { %>
       <h2 class="flash__message flash__message--error"><%= errorMessage %></h2>
     <% } %>
-    <form action="/login" method="POST">
-      <label for="user[email]">E-mail</label>
-      <input type="email" name="user[email]"><br>
-      <label for="user[password]">Password</label>
-      <input type="password" name="user[password]"><br>
+    <form action="/reset-password" method="POST">
+      <label for="email">E-mail</label>
+      <input type="email" name="email"><br>
       <input type="hidden" value="<%= csrfToken %>" name="_csrf">
-      <button type="submit">Login</button>
+      <button type="submit">Send</button>
     </form>
-
-    <a href="/reset-password">Forgot Password</a>
 
   </div>
 

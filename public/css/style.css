@@ -492,6 +492,11 @@ h1, h2, h3, h4, h5, h6 {
 .white-link {
   color: #fff; }
 
+.flash__message {
+  border: 1px solid green; }
+  .flash__message--error {
+    background-color: red; }
+
 .navbar {
   background-color: #e8f4ff;
   height: 7vh;

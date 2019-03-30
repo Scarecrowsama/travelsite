@@ -1,0 +1,28 @@
+<%- include('../partials/header'); %>
+</head>
+
+<body>
+
+  <%- include('../partials/navbar'); %>
+
+  <div class="container">
+
+    <h1>New Password</h1>
+    <% if(errorMessage) { %>
+      <h2 class="flash__message flash__message--error"><%= errorMessage %></h2>
+    <% } %>
+
+    <form action="/new-password/<%= passwordToken %>" method="POST">
+      <label for="password[newPassword1]">Password</label>
+      <input type="password" name="password[newPassword1]"><br>
+      <label for="password[newPassword2]">Confirm Password</label>
+      <input type="password" name="password[newPassword2]"><br>
+      <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+      <input type="hidden" value="<%= userId %>" name="userId">
+      <input type="hidden" value="<%= passwordToken %>" name="passwordToken">
+      <button type="submit">Update!</button>
+    </form>
+
+  </div>
+
+<%- include('../partials/footer'); %>

@@ -56,3 +56,11 @@
 .white-link {
   color: #fff;
 }
+
+.flash__message {
+  border: 1px solid green;
+
+  &--error {
+    background-color: red;
+  }
+}
