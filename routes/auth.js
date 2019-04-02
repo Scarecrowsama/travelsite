@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/auth');
+const { check } = require('express-validator/check');
 
 router.route('/login')
   .get(authController.loginPage)
@@ -8,7 +9,7 @@ router.route('/login')
 
 router.route('/signup')
   .get(authController.getSignup)
-  .post(authController.postSignup);
+  .post(check('email').isEmail().withMessage('Email is not valid.'), authController.postSignup);
 
 router.route('/reset-password')
   .get(authController.getResetPassword)

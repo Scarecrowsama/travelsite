@@ -1,9 +1,10 @@
-const bcrypt            = require('bcryptjs');
-const User              = require('../models/user');
-const crypto            = require('crypto');
-const nodemailer        = require('nodemailer');
-const sendrigTransport  = require('nodemailer-sendgrid-transport');
-const transporter       = nodemailer.createTransport(sendrigTransport({
+const bcrypt                = require('bcryptjs');
+const crypto                = require('crypto');
+const { validationResult }  = require('express-validator/check')
+const nodemailer            = require('nodemailer');
+const sendrigTransport      = require('nodemailer-sendgrid-transport');
+const User                  = require('../models/user');
+const transporter           = nodemailer.createTransport(sendrigTransport({
   auth: {
     api_key: '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'
   }
@@ -23,9 +24,8 @@ exports.postLogin = async (req, res, next) => {
       createUserSession(validation.user, req, res);
     } else {
       req.flash('error', 'The username or password is not valid.');
-      res.redirect('back');
+      return res.redirect('back');
     }
-      
   } catch(err) {
     console.log(err);
     next(err);
@@ -40,6 +40,10 @@ exports.getSignup = (req, res, next) => {
 
 exports.postSignup = async (req, res, next) => {
   try {
+    // const errors = validateUser(req);
+    // if(!errors.isEmpty()) {
+    //   return res.status(422).render('auth/signup', { pageTitle: 'Sign Up to Travel Sites', errorMessage: errors[0].msg });
+    // }
     const userExist = await User.findOne({ email: req.body.email });
     if(userExist) {
       req.flash('error', 'Email already exists.');
@@ -59,7 +63,7 @@ exports.postSignup = async (req, res, next) => {
       });
     } else {
       req.flash('error', 'Passwords do not match.');
-      res.redirect('/signup');
+      return res.redirect('/signup');
     }
   } catch(err) {
     console.log(err);
@@ -120,7 +124,6 @@ exports.postNewPassword = async (req, res, next) => {
     const userId = req.body.userId;
     const passwordToken = req.body.passwordToken;
     const foundUser = await User.findOne({ resetToken: passwordToken, tokenExpiry: { $gt: Date.now() }, _id: userId });
-    console.log(foundUser);
     if(!foundUser || newPassword1 !== newPassword2) {
       return res.redirect('back');
     }
@@ -128,8 +131,8 @@ exports.postNewPassword = async (req, res, next) => {
     foundUser.password = newPassword;
     foundUser.resetToken = null;
     foundUser.tokenExpiry = null;
-    foundUser.save();
-    res.redirect('/login');
+    await foundUser.save();
+    return res.redirect('/login');
   } catch(err) {
     next(err);
   }
@@ -144,12 +147,10 @@ exports.postLogout = (req, res, next) => {
 async function validateUser(email, password) {
   try {
     const user = await User.findOne({ email: email });
-    if(user) {
-      const passwordConfirmed = await bcrypt.compare(password, user.password);
-      return { user: user, password: passwordConfirmed };
-    } else {
-      return { user: null, password: false };
-    }
+    if(!user) { return { user: null, password: false }; }
+    const passwordConfirmed = await bcrypt.compare(password, user.password);
+    if(passwordConfirmed === false) { return { user: user, password: false }; }
+    return { user: user, password: passwordConfirmed };
   } catch(err) {
     console.log(err);
     next(err);
@@ -159,7 +160,7 @@ async function validateUser(email, password) {
 function createUserSession(user, req, res) {
   req.session.isLoggedIn = true;
   req.session.user = user;
-  return req.session.save(err => {
+  req.session.save(err => {
     res.redirect('/');
   });
 }
