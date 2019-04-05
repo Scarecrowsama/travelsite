@@ -24,7 +24,8 @@
           <div class="region-card">
     
             <div class="region-card__header">
-              <h1 class="region-card__heading"><%= region.name %></h1>
+              <h1 class="region-card__heading"><i class="fas fa-ellipsis-h"></i>&nbsp;<%= region.name %></h1>
+              <a href="#" class="region-card__heading--right">See all <%= region.countries.length %> destinations</a>
             </div>
     
             <div class="region-card__destinations">
@@ -33,7 +34,7 @@
                 <div class="destination-card destination-card--<%= index %>">
                   <div class="destination-card__head">
                     <a class="destination-card__link" href="/destinations/<%= country._id %>"><%= country.name %></a>
-                    <img src="https://source.unsplash.com/random/450x300/?sig=<%= index %>&travel" alt="" class="destination-card__img">
+                    <img src="https://source.unsplash.com/random/450x300/?sig=1<%= index %>&travel" alt="" class="destination-card__img">
                   </div>
 
                   <!-- <div class="destination-card__cities">

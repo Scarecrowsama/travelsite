@@ -548,15 +548,20 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #3a4a4d; }
   .region-card__header {
     grid-column: 1 / -1;
-    grid-row: 1 / 2; }
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #F24333;
+    margin: 1rem 4rem 4rem 4rem; }
   .region-card__heading {
     text-transform: uppercase;
-    border-top-right-radius: 3rem;
-    border-top-left-radius: 3rem;
-    text-align: center;
-    padding: 4rem 0;
+    font-size: 4rem;
+    padding: 3rem 0 2rem 2rem;
     margin: 0;
-    color: #30C9E8; }
+    color: #F24333;
+    flex: 1; }
+    .region-card__heading--right {
+      padding: 3rem 3rem 2rem 2rem; }
   .region-card__destinations {
     grid-column: 1 / -1;
     grid-row: 2 / 3;
@@ -630,7 +635,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100vw;
   height: 100vh;
-  background: url("../images/hero2.jpg") no-repeat center;
+  background: url("../images/hero3.jpg") no-repeat center;
   background-size: cover; }
 
 .hero__content {
