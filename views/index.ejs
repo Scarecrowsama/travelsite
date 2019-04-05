@@ -25,7 +25,7 @@
     
             <div class="region-card__header">
               <h1 class="region-card__heading"><i class="fas fa-ellipsis-h"></i>&nbsp;<%= region.name %></h1>
-              <a href="#" class="region-card__heading--right">See all <%= region.countries.length %> destinations</a>
+              <a href="#" class="region-card__heading--right"><i class="fas fa-globe-africa"></i>&nbsp;See all <%= region.countries.length %> destinations</a>
             </div>
     
             <div class="region-card__destinations">
@@ -34,7 +34,7 @@
                 <div class="destination-card destination-card--<%= index %>">
                   <div class="destination-card__head">
                     <a class="destination-card__link" href="/destinations/<%= country._id %>"><%= country.name %></a>
-                    <img src="https://source.unsplash.com/random/450x300/?sig=1<%= index %>&travel" alt="" class="destination-card__img">
+                    <img src="https://source.unsplash.com/random/450x300/?sig=<%= index %>&travel" alt="" class="destination-card__img">
                   </div>
 
                   <!-- <div class="destination-card__cities">
@@ -68,8 +68,26 @@
             </div>
 
             <div class="region-card__footer">
-              <p>Stars</p>
-              <p>Airlines</p>
+              <ul class="region-card__actions">
+                <li class="region-card__action">
+                  <a href="#" class="region-card__link"><i class="fas fa-map-signs"></i>&nbsp;&nbsp;Getting Around</a>
+                </li>
+                <li class="region-card__action">
+                  <a href="#" class="region-card__link"><i class="fas fa-window-restore"></i>&nbsp;&nbsp;Booking Sites</a>
+                </li>
+                <li class="region-card__action">
+                  <a href="#" class="region-card__link"><i class="fas fa-piggy-bank"></i>&nbsp;&nbsp;Money Saving Tips</a>
+                </li>
+                <li class="region-card__action">
+                  <a href="#" class="region-card__link"><i class="fas fa-money-bill-alt"></i>&nbsp;&nbsp;Budgets</a>
+                </li>
+                <li class="region-card__action">
+                  <a href="#" class="region-card__link"><i class="fas fa-suitcase-rolling"></i>&nbsp;&nbsp;Packing Guide</a>
+                </li>
+                <li class="region-card__action">
+                  <a href="#" class="region-card__link"><i class="fas fa-route"></i>&nbsp;&nbsp;Itineraries</a>
+                </li>
+              </ul>
             </div>
     
           </div>
