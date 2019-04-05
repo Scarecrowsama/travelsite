@@ -3,21 +3,20 @@
 $font-primary: 'Montserrat', sans-serif !default;
 $font-secondary: 'Oswald',  monospace !default;
 
-$color-primary: #0086ff !default;
-$color-secondary: #005A9C !default;
-$color-tertiary: #1E90FF !default;
+$color-primary: #30C9E8 !default;
+$color-secondary: #3a4a4d !default;
 $color-dark: #0F0A0A !default;
+$brand: #F24333;
 $text-color: rgb(34, 34, 34) !default;
 $text-color-light: #fff;
 $light-grey: rgb(237, 237, 237) !default;
 $mid-grey: rgb(153, 153, 153) !default;
 $dark-grey: #4c5454 !default;
-$default-link-color: #ff715b !default;
-$secondary-link-color: #ffce1e !default;
-$background-primary: rgb(245, 245, 245) !default;
-$background-secondary: #f2f3f2 !default;
+$default-link-color: #30c9e8 !default;
+$secondary-link-color: #fff !default;
+$background-primary: #f9fbfb !default;
 
-$max-width: 1200px !default;
+$max-width: 100vw !default;
 
 $breakpoints: (
   'small': 320px,

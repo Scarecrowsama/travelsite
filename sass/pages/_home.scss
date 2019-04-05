@@ -4,7 +4,7 @@
   height: 100vh;
   // margin-top: 7vh;
   // background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,.6)), url('https://source.unsplash.com/random/1600x900/?travel') no-repeat center;
-  background: url('../images/hero1.jpg') no-repeat bottom;
+  background: url('../images/hero2.jpg') no-repeat center;
   background-size: cover;
 }
 
@@ -19,7 +19,7 @@
     width: 100%;
     padding: 2rem;
     margin: auto;
-    color: $color-secondary;
+    color: $color-primary;
     font-size: 5rem;
     font-family: $font-secondary;
     letter-spacing: 1rem;
@@ -27,10 +27,10 @@
     text-transform: uppercase;
     text-align: center;
     background-color: rgba(#fff, .7);
-    box-shadow: 0 1px 5px rgba($dark-grey, .6);
+    box-shadow: 0 1px 5px rgba($color-secondary, .6);
   }
 }
 
-.destinations {
-  margin-top: 5rem;
-}
+// .destinations {
+//   margin-top: 5rem;
+// }

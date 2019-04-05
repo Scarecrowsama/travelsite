@@ -17,8 +17,9 @@
       <li><a href="<%= foundDestination._id %>/cities/<%= city._id %>"><%= city.name %></a></li>
     <% }) %>
   </ul>
-
-  <a class="btn btn-primary" href="/destinations/<%= foundDestination._id %>/cities/new">Add a new City to <%= foundDestination.name %></a>
+  <% if(isAuthenticated) { %>
+    <a class="btn btn-primary" href="/destinations/<%= foundDestination._id %>/cities/new">Add a new City to <%= foundDestination.name %></a>
+  <% } %>
 
 </div>
 
