@@ -23,7 +23,7 @@ a {
   letter-spacing: 1px;
 
   @include on-event {
-    color: $text-color;
+    color: $brand;
   }
 }
 
@@ -33,4 +33,21 @@ li {
 
 textarea {
   resize: none;
+}
+
+button {
+  padding: 1rem 1.5rem;
+  background-color: $brand;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
+  transition: all .5s ease-in-out;
+
+  @include on-event {
+    background-color: $color-primary;
+  }
 }

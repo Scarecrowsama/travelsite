@@ -14,15 +14,15 @@
   </ul>
   <form action="#" class="navbar__search">
     <input type="search" name="search" id="search">
-    <button type="submit">Search</button>
+    <button type="submit" class="search">Search</button>
   </form>
   <% if(!isAuthenticated) { %>
-    <a href="/login">Login</a>
-    <a href="/signup">Sign Up!</a>
+    <a href="/login" class="navbar__item">Login</a>
+    <a href="/signup" class="navbar__item">Sign Up!</a>
   <% } else { %>
     <form action="/logout" method="POST">
       <input type="hidden" value="<%= csrfToken %>" name="_csrf">
-      <button href="/logout" type="submit">Logout</button>
+      <button href="/logout" type="submit" class="mr-sm">Logout</button>
     </form>
   <% } %>
 
