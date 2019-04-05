@@ -9,7 +9,6 @@ exports.attractions_new = async (req, res, next) => {
   } catch(err) {
     next(err);
   }
-  
 }
 
 exports.attractions_create = async (req, res, next) => {
@@ -19,7 +18,7 @@ exports.attractions_create = async (req, res, next) => {
     const createdAttraction = await Attraction.create(req.body.attraction);
     foundCity.attractions.push(createdAttraction._id);
     foundCity.save();
-    res.redirect('back');
+    return res.redirect('back');
   } catch(err) {
     next(err);
   }

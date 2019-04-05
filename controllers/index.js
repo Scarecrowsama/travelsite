@@ -9,7 +9,7 @@ exports.index_view_all = async (req, res, next) => {
       path: 'countries',
       model: 'Destination',
       select: '_id name cities',
-      options: { sort: { name: 1 } },
+      options: { sort: { name: 1 }, limit: 3 },
       populate: {
         path: 'cities',
         model: 'City',

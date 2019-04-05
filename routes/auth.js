@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/auth');
 const { check } = require('express-validator/check');
+const isAuth = require('../middlewares/is-auth');
 
 router.route('/login')
   .get(authController.loginPage)
@@ -19,6 +20,6 @@ router.route('/new-password/:token')
   .get(authController.getNewPassword)
   .post(authController.postNewPassword);
 
-router.post('/logout', authController.postLogout);
+router.post('/logout', isAuth, authController.postLogout);
 
 module.exports = router;

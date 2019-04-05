@@ -36,19 +36,21 @@
                     <img src="https://source.unsplash.com/random/450x300/?sig=<%= index %>&travel" alt="" class="destination-card__img">
                   </div>
 
-                  <div class="destination-card__cities">
+                  <!-- <div class="destination-card__cities">
                     <ul class="destination-card__cities--list">
                       <% country.cities.forEach(city => { %>
-                        <li class="destination-card__cities--city">&raquo;&nbsp;<%= city.name %></li>
+                        <li class="destination-card__cities--city">
+                          <a href="/destinations/<%= country._id %>/cities/<%= city._id %>">&raquo;&nbsp;<%= city.name %></a>
+                        </li>
                       <% }); %>
                     </ul>
-                  </div>
+                  </div> -->
 
                   <div class="destination-card__actions">
                     <ul class="destination-card__actions--list">
                       <li class="destination-card__stars">
                         <% for(i = 0; i < 5; i++) { %>
-                          <a href="#">
+                          <a href="#" class="secondary-link">
                             <i class="fas fa-star"></i>
                           </a>
                         <% } %>

@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
 
-const attraction = new mongoose.Schema({
-  name: { type: String, required: true },
-  description: { type: String, required: true },
-  price: { type: Number, default: 0, required: true }, //Use 0 for free and -1 for unknown.
-  // gallery: { 
-  //   photos: [ String ], //Name like attraction-altText-altText... to split  the words and use them as a description or alt text.
-  //   videos: [ String ],
-  //   required: true 
-  // },
+const eatery = new mongoose.Schema({
+  name: String,
+  cuisine: { type: String, required: true },
+  typeOfPlace: { type: String, required: true },
+  priceRange: { type: String },
+  website: { type: String },
   location: {
     altitude: String,
     latitude: String,
@@ -31,4 +28,4 @@ const attraction = new mongoose.Schema({
   article: { type: mongoose.Schema.Types.ObjectId, ref: 'Article' }
 }, {strict: true});
 
-module.exports = mongoose.model('Attraction', attraction);
+module.exports = mongoose.model('Eatery', eatery);

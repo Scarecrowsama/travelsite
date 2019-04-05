@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+<%- include('../partials/header'); %>
+
+</head>
+
+<body>
+
+  <%- include('../partials/navbar'); %>
+
+    <div class="container basicFormWidth" id="newAttractionContainer">
+
+      <h1>Add New Eatery to <%= foundCity.name %></h1>
+
+      <form action="/destinations/<%= foundCity.country.id %>/cities/<%= foundCity._id %>/eateries/new" method="POST">
+        <div class="form-group">
+            <label for="eatery[name]">Name:</label>
+            <input class="form-control" type="text" name="eatery[name]" placeholder="Eatery name..."><br>
+            <label for="eatery[cuisine]">Cuisine:</label>
+            <input name="eatery[cuisine]" type="text" placeholder="Eatery cuisine..."><br>
+            <label for="eatery[typeOfPlace]">Type:</label>
+            <select name="eatery[typeOfPlace]">
+              <option selected disabled hidden>Choose a Type</option>
+              <option value="Restaurant">Restaurant</option>
+              <option value="Market">Market</option>
+              <option value="Street&nbsp;Food">Street Food</option>
+            </select>
+            <input type="hidden" name=city[id] value="<%= foundCity._id %>">
+            <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Add</button>
+      </form>
+
+    </div>
+
+<% include ../partials/footer %>

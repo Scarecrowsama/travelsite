@@ -38,6 +38,7 @@ app.use(require('./routes/index'));
 app.use('/destinations', require('./routes/destinations'));
 app.use('/destinations', require('./routes/cities'));
 app.use('/destinations', require('./routes/attractions'));
+app.use('/destinations', require('./routes/eateries'));
 app.use(require('./routes/auth'));
 
 app.use((req, res, next) => {

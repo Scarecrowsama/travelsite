@@ -16,5 +16,3 @@ const rating = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Rating', rating);
-
-//Can mongoose duplicate id's on different collections? If so, what to do.
