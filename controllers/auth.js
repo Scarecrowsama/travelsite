@@ -11,64 +11,61 @@ const transporter           = nodemailer.createTransport(sendrigTransport({
 }));
 
 exports.loginPage = (req, res, next) => {
-  let message = req.flash('error');
-  (message.length > 0) ? message = message[0] : message = null;
-  res.render('auth/login', { pageTitle: 'Login to Travel Guides', errorMessage: message });
+  res.render('auth/login', { 
+    pageTitle: 'Login to Travel Guides', 
+    errorMessage: '' 
+  });
 }
 
-exports.postLogin = async (req, res, next) => {
-  try {
+exports.postLogin = async (req, res, next) => 
+{
+  try 
+  {
     const errors = validationResult(req);
-    if(!errors.isEmpty()) {
-      return res.status(422).render('auth/login', { pageTitle: 'Login to Travel Guides', errorMessage: errors.array()[0].msg });
+
+    if(!errors.isEmpty()) 
+    {
+      return res
+      .status(422)
+      .render('auth/login', 
+      { 
+        pageTitle: 'Login to Travel Guides', 
+        errorMessage: errors.array()[0].msg 
+      });
     }
-    const { email, password } = req.body.user;
-    const validation = await validateUser(email, password);
-    if(validation.user !== null && validation.password === true) {
-      createUserSession(validation.user, req, res);
-    } else {
-      req.flash('error', 'The username or password is not valid.');
-      return res.redirect('back');
-    }
-  } catch(err) {
+
+    const user = await User.findOne({ email: req.body.user.email });
+    createUserSession(user, req, res);
+  } 
+  catch(err) 
+  {
     console.log(err);
     next(err);
   }
 }
 
 exports.getSignup = (req, res, next) => {
-  let message = req.flash('error');
-  (message.length > 0) ? message = message[0] : message = null;
-  res.render('auth/signup', { pageTitle: 'Sign Up to Travel Sites', errorMessage: message });
+  res.render('auth/signup', { pageTitle: 'Sign Up to Travel Sites', errorMessage: '', userInput: { email: '' } });
 }
 
 exports.postSignup = async (req, res, next) => {
+  const errors = validationResult(req);
+  
+  if(!errors.isEmpty()) {
+    return res.status(422).render('auth/signup', { pageTitle: 'Sign Up to Travel Guides', errorMessage: errors.array()[0].msg, userInput: { email: req.body.user.email } });
+  }
+
   try {
-    const errors = validationResult(req);
-    if(!errors.isEmpty()) {
-      return res.status(422).render('auth/signup', { pageTitle: 'Sign Up to Travel Guides', errorMessage: errors.array()[0].msg });
-    }
-    const userExist = await User.findOne({ email: req.body.email });
-    if(userExist) {
-      req.flash('error', 'Email already exists.');
-      return res.redirect('/signup');
-    }
-    let { pass1, pass2 } = req.body.password;
-    if(pass1 === pass2) {
-      const user = { email: req.body.email, password: pass1 };
-      user.password = await bcrypt.hash(pass1, 12);
-      await User.create(user);
-      res.redirect('/');
-      // return transporter.sendMail({
-      //   to: req.body.email,
-      //   from: 'info@travelguides.com',
-      //   subject: 'Registration Successful',
-      //   html: '<h1>You are in bro!</h1>'
-      // });
-    } else {
-      req.flash('error', 'Passwords do not match.');
-      return res.redirect('/signup');
-    }
+    const user = { email: req.body.user.email, password: req.body.password.pass1 };
+    user.password = await bcrypt.hash(req.body.password.pass1, 12);
+    await User.create(user);
+    res.redirect('/');
+    // return transporter.sendMail({
+    //   to: req.body.email,
+    //   from: 'info@travelguides.com',
+    //   subject: 'Registration Successful',
+    //   html: '<h1>You are in bro!</h1>'
+    // });
   } catch(err) {
     console.log(err);
     next(err);
@@ -149,18 +146,18 @@ exports.postLogout = (req, res, next) => {
   });
 }
 
-async function validateUser(email, password) {
-  try {
-    const user = await User.findOne({ email: email });
-    if(!user) { return { user: null, password: false }; }
-    const passwordConfirmed = await bcrypt.compare(password, user.password);
-    if(passwordConfirmed === false) { return { user: user, password: false }; }
-    return { user: user, password: passwordConfirmed };
-  } catch(err) {
-    console.log(err);
-    next(err);
-  }  
-}
+// async function validateUser(email, password) {
+//   try {
+//     const user = await User.findOne({ email: email });
+//     if(!user) { return { user: null, password: false }; }
+//     const passwordConfirmed = await bcrypt.compare(password, user.password);
+//     if(passwordConfirmed === false) { return { user: user, password: false }; }
+//     return { user: user, password: passwordConfirmed };
+//   } catch(err) {
+//     console.log(err);
+//     next(err);
+//   }  
+// }
 
 function createUserSession(user, req, res) {
   req.session.isLoggedIn = true;

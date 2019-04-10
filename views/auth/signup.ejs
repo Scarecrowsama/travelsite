@@ -13,23 +13,46 @@
     <% } %>
 
     <div class="form-container">
+
       <form action="/signup" method="POST" class="auth-form">
+
         <div class="input-group">
-          <label for="email">E-mail</label>
-          <input type="email" name="email" placeholder="Email..." required><br>
+          <label for="user[email]">E-mail</label>
+          <input
+              type="email"
+              name="user[email]"
+              placeholder="Email..."
+              value="<%= userInput.email %>"
+              required>
+          <br>
         </div>
+
         <div class="input-group">
           <label for="password[pass1]">Password</label>
-          <input type="password" name="password[pass1]" placeholder="Password..." required><br>
+          <input 
+              type="password" 
+              name="password[pass1]" 
+              placeholder="Password..." 
+              required>
+          <br>
         </div>
+
         <div class="input-group">
           <label for="password[pass2]">Repeat</label>
-          <input type="password" name="password[pass2]" placeholder="Repeat password..." required><br>
+          <input 
+              type="password" 
+              name="password[pass2]" 
+              placeholder="Repeat password..." 
+              required>
+          <br>
         </div>
+
         <input type="hidden" value="<%= csrfToken %>" name="_csrf">
         <button type="submit">Sign Up!</button>
+
       </form>
-    </div>
-  </div>
+
+    </div> <!-- Form container -->
+  </div> <!-- Main container -->
 
 <%- include('../partials/footer'); %>

@@ -1,17 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/auth');
-// const { check } = require('express-validator/check');
 const validator = require('../middlewares/validator');
 const isAuth = require('../middlewares/is-auth');
 
 router.route('/login')
   .get(authController.loginPage)
-  .post(validator.checkEmail, authController.postLogin);
+  .post(validator.checkEmail, validator.validateEmailAndPassword, authController.postLogin);
 
 router.route('/signup')
   .get(authController.getSignup)
-  .post([validator.checkEmail, validator.checkPassword], authController.postSignup);
+  .post([validator.checkEmail, validator.checkPasswordLength, validator.checkPasswordMatch, validator.verifyIfEmailExistsInDatabase], authController.postSignup);
 
 router.route('/reset-password')
   .get(authController.getResetPassword)
