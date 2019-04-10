@@ -7,7 +7,7 @@
   <%- include('../partials/navbar'); %>
 
   <div class="container mt-lg">
-    <h1 class="destinations-page__heading">Choose a Destination</h1>
+    <h1 class="destinations-page__heading underlined">Choose a Destination</h1>
     
     <div class="cards-container">
       <% allDestinations.forEach((destination, index) => { %>
@@ -19,7 +19,7 @@
           </div>
           <div class="country-card__body">
             <p class="country-card__country">
-              <a href="destinations/<%= destination._id %>"><%= destination.name %></a>
+              <a href="destinations/<%= destination._id %>"><i class="fas fa-ellipsis-h"></i>&nbsp;<%= destination.name %></a>
             </p>
             <div class="country-card__cities">
               <ul class="country-card__cities--list">
@@ -34,14 +34,14 @@
               <ul class="destination-card__actions--list">
                 <li class="destination-card__stars">
                   <% for(i = 0; i < 5; i++) { %>
-                    <a href="#" class="">
+                    <a href="#" class="white-link">
                       <i class="fas fa-star"></i>
                     </a>
                   <% } %>
                 </li>
-                <li><a href="#" class=""><i class="fab fa-youtube"></i></a></li>
-                <li><a href="#" class=""><i class="fas fa-share-alt"></i></a></li>
-                <li><a href="#" class=""><i class="far fa-heart"></i></a></li>
+                <li><a href="#" class="white-link"><i class="fab fa-youtube"></i></a></li>
+                <li><a href="#" class="white-link"><i class="fas fa-share-alt"></i></a></li>
+                <li><a href="#" class="white-link"><i class="far fa-heart"></i></a></li>
               </ul>
             </div>
           </div> <!-- Country card body -->

@@ -33,7 +33,7 @@ exports.destinations_show = async (req, res, next) => {
     const foundDestination = await Destination.findById(req.params.id)
     .select('name flag region cities')
     .populate('cities');
-    res.render('destinations/show', {foundDestination: foundDestination, pageTitle: ''});
+    res.render('destinations/show', { foundDestination: foundDestination, pageTitle: `${foundDestination.name} - Travel Guides` });
   } catch(err) {
     err.status = 404;
     err.message = 'The requested destination does not exist.';

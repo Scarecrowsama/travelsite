@@ -5,24 +5,31 @@
 
   <%- include('../partials/navbar'); %>
 
-  <div class="container">
+  <div class="container container--lg mt-xl">
 
-    <h1>Login</h1>
+    <h1 class="underlined underlined--lg">Sign Up</h1>
     <% if(errorMessage) { %>
       <h2 class="flash__message flash__message--error"><%= errorMessage %></h2>
     <% } %>
 
-    <form action="/signup" method="POST">
-      <label for="email">E-mail</label>
-      <input type="email" name="email"><br>
-      <label for="password[pass1]">Password</label>
-      <input type="password" name="password[pass1]"><br>
-      <label for="password[pass2]">Confirm Password</label>
-      <input type="password" name="password[pass2]"><br>
-      <input type="hidden" value="<%= csrfToken %>" name="_csrf">
-      <button type="submit">Sign Up!</button>
-    </form>
-
+    <div class="form-container">
+      <form action="/signup" method="POST" class="auth-form">
+        <div class="input-group">
+          <label for="email">E-mail</label>
+          <input type="email" name="email" placeholder="Email..." required><br>
+        </div>
+        <div class="input-group">
+          <label for="password[pass1]">Password</label>
+          <input type="password" name="password[pass1]" placeholder="Password..." required><br>
+        </div>
+        <div class="input-group">
+          <label for="password[pass2]">Repeat</label>
+          <input type="password" name="password[pass2]" placeholder="Repeat password..." required><br>
+        </div>
+        <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+        <button type="submit">Sign Up!</button>
+      </form>
+    </div>
   </div>
 
 <%- include('../partials/footer'); %>

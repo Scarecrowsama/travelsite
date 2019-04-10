@@ -11,6 +11,6 @@ const city = new mongoose.Schema({
     id: { type: mongoose.Schema.Types.ObjectId, ref: 'Rating' },
     totalVotes: { type: Number, default: 0 }, average: { type: Number, default: 0 }
   }
-}, {strict: true});
+}, { strict: true });
 
 module.exports = mongoose.model('City', city);

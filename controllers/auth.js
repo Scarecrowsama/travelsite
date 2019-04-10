@@ -1,8 +1,8 @@
 const bcrypt                = require('bcryptjs');
 const crypto                = require('crypto');
-const { validationResult }  = require('express-validator/check')
 const nodemailer            = require('nodemailer');
 const sendrigTransport      = require('nodemailer-sendgrid-transport');
+const { validationResult }  = require('express-validator/check');
 const User                  = require('../models/user');
 const transporter           = nodemailer.createTransport(sendrigTransport({
   auth: {
@@ -18,6 +18,10 @@ exports.loginPage = (req, res, next) => {
 
 exports.postLogin = async (req, res, next) => {
   try {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+      return res.status(422).render('auth/login', { pageTitle: 'Login to Travel Guides', errorMessage: errors.array()[0].msg });
+    }
     const { email, password } = req.body.user;
     const validation = await validateUser(email, password);
     if(validation.user !== null && validation.password === true) {
@@ -40,10 +44,10 @@ exports.getSignup = (req, res, next) => {
 
 exports.postSignup = async (req, res, next) => {
   try {
-    // const errors = validateUser(req);
-    // if(!errors.isEmpty()) {
-    //   return res.status(422).render('auth/signup', { pageTitle: 'Sign Up to Travel Sites', errorMessage: errors[0].msg });
-    // }
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+      return res.status(422).render('auth/signup', { pageTitle: 'Sign Up to Travel Guides', errorMessage: errors.array()[0].msg });
+    }
     const userExist = await User.findOne({ email: req.body.email });
     if(userExist) {
       req.flash('error', 'Email already exists.');
@@ -55,12 +59,12 @@ exports.postSignup = async (req, res, next) => {
       user.password = await bcrypt.hash(pass1, 12);
       await User.create(user);
       res.redirect('/');
-      return transporter.sendMail({
-        to: req.body.email,
-        from: 'info@travelguides.com',
-        subject: 'Registration Successful',
-        html: '<h1>You are in bro!</h1>'
-      });
+      // return transporter.sendMail({
+      //   to: req.body.email,
+      //   from: 'info@travelguides.com',
+      //   subject: 'Registration Successful',
+      //   html: '<h1>You are in bro!</h1>'
+      // });
     } else {
       req.flash('error', 'Passwords do not match.');
       return res.redirect('/signup');

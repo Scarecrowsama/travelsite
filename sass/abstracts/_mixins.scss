@@ -31,3 +31,15 @@
   }
 }
 
+@mixin orange-horizontal-line($size) {
+  &::after {
+    content: '';
+    width: $size;
+    height: 2px;
+    background-color: $brand;
+    position: absolute;
+    bottom: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

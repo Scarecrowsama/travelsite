@@ -6,21 +6,27 @@
 
   <%- include('../partials/navbar'); %>
 
-<div class="container-fluid">
+  <div id="hero" class="hero background">
+    <!-- <div class="hero__content">
+      <h1 class="hero__header"><%= foundDestination.name %></h1>
+    </div> -->
+  </div>
 
-  <h1><%= foundDestination.name %></h1>
+  <div class="container container--lg mt-md">
 
-  <h3>Top 5 Cities in <%= foundDestination.name %></h3>
+    <h1 class="underlined underlined--lg"><%= foundDestination.name %></h1>
 
-  <ul>
-    <% foundDestination.cities.slice(0, 5).forEach(city => { %>
-      <li><a href="<%= foundDestination._id %>/cities/<%= city._id %>"><%= city.name %></a></li>
-    <% }) %>
-  </ul>
-  <% if(isAuthenticated) { %>
-    <a class="btn btn-primary" href="/destinations/<%= foundDestination._id %>/cities/new">Add a new City to <%= foundDestination.name %></a>
-  <% } %>
+    <h3>Top 5 Cities in <%= foundDestination.name %></h3>
 
-</div>
+    <ul>
+      <% foundDestination.cities.slice(0, 5).forEach(city => { %>
+        <li><a href="<%= foundDestination._id %>/cities/<%= city._id %>"><%= city.name %></a></li>
+      <% }) %>
+    </ul>
+    <% if(isAuthenticated) { %>
+      <a class="btn btn-primary" href="/destinations/<%= foundDestination._id %>/cities/new">Add a new City to <%= foundDestination.name %></a>
+    <% } %>
+
+  </div>
 
 <%- include('../partials/footer'); %>

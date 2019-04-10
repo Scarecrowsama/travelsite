@@ -5,23 +5,28 @@
 
   <%- include('../partials/navbar'); %>
 
-  <div class="container">
+  <div class="container container--lg mt-xl">
 
-    <h1>Login</h1>
+    <h1 class="underlined underlined--lg">Login</h1>
     <% if(errorMessage) { %>
       <h2 class="flash__message flash__message--error"><%= errorMessage %></h2>
     <% } %>
-    <form action="/login" method="POST">
-      <label for="user[email]">E-mail</label>
-      <input type="email" name="user[email]"><br>
-      <label for="user[password]">Password</label>
-      <input type="password" name="user[password]"><br>
-      <input type="hidden" value="<%= csrfToken %>" name="_csrf">
-      <button type="submit">Login</button>
-    </form>
 
-    <a href="/reset-password">Forgot Password</a>
-
+    <div class="form-container">
+      <form action="/login" method="POST" class="auth-form">
+        <div class="input-group">
+          <label for="user[email]">E-mail</label>
+          <input type="email" name="user[email]" placeholder="Email..." required><br>
+        </div>
+        <div class="input-group">
+          <label for="user[password]">Password</label>
+          <input type="password" name="user[password]" placeholder="Password..." required><br>
+        </div>
+        <a href="/reset-password">Forgot Password</a>
+        <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+        <button type="submit">Login</button>
+      </form>
+    </div>
   </div>
 
 <%- include('../partials/footer'); %>

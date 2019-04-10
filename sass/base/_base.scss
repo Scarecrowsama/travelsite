@@ -31,6 +31,24 @@ li {
   list-style: none;
 }
 
+label {
+  padding: 1rem;
+  display: inline-block;
+  width: 15rem;
+  text-align: center;
+}
+
+input {
+  outline: none;
+  padding: 1rem;
+  border: 1px solid $color-secondary;
+  border-radius: .5rem;
+
+  &::placeholder {
+    color: #bbb;
+  }
+}
+
 textarea {
   resize: none;
 }

@@ -18,10 +18,13 @@
  * 3. Leave some space on the edges, especially valuable on small screens
  */
 .container {
-  max-width: $max-width; /* 1 */
-  // margin: 7vh auto 0 auto;
+  max-width: $max-width;
   margin: 0 auto;
-  width: 100%; /* 1 */
+  width: 100%;
+
+  &--lg {
+    max-width: 120rem;
+  }
  }
 
 /**
@@ -61,10 +64,15 @@
 }
 
 .flash__message {
-  border: 1px solid green;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid #000;
+  padding: 1.5rem;
+  width: 25%;
 
   &--error {
     background-color: red;
+    color: #fff;
   }
 }
 
@@ -72,6 +80,24 @@
   margin-right: 1.5rem;
 }
 
+.mt-xl {
+  margin-top: 20vh;
+}
+
 .mt-lg {
-  margin-top: 16vh;
+  margin-top: 13vh;
+}
+
+.mt-md {
+  margin-top: 9vh;
+}
+
+.underlined {
+  position: relative;
+  text-align: center;
+  margin-bottom: 8rem;
+
+  &--lg {
+    @include orange-horizontal-line(80%);
+  }
 }

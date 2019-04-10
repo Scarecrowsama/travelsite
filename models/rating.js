@@ -12,7 +12,8 @@ const rating = new mongoose.Schema({
   },
   totalStars: { type: Number, default: 0, required: true },
   totalVotes: { type: Number, default: 0, required: true },
-  average: { type: Number, default: 0, required: true },
+  averageRating: { type: Number, default: 0, required: true },
+  // averagePerVote: { type: Number, default: 0, required: true }
 });
 
 module.exports = mongoose.model('Rating', rating);

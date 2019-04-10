@@ -1,21 +1,12 @@
 .destinations-page {
 
   &__heading {
-    text-align: center;
-    text-transform: uppercase;
-    color: $brand;
-    margin-bottom: 8rem;
-    position: relative;
-
-    &::after {
-      content: '';
-      width: 80%;
-      height: 2px;
-      background-color: $brand;
-      position: absolute;
-      bottom: -3rem;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+    
+    @include orange-horizontal-line(80%);
   }
+}
+
+.background {
+  background: url('https://source.unsplash.com/random/1600x900/?phiphi') no-repeat center !important;
+  background-size: cover;
 }
