@@ -21,6 +21,6 @@ exports.index_view_all = async (req, res, next) => {
   } catch(err) {
     err.status = 404;
     err.message = 'Something went wrong.';
-    next(err);
+    return next(err);
   }
 }

@@ -40,7 +40,7 @@ exports.postLogin = async (req, res, next) =>
   catch(err) 
   {
     console.log(err);
-    next(err);
+    return next(err);
   }
 }
 
@@ -50,7 +50,7 @@ exports.getSignup = (req, res, next) => {
 
 exports.postSignup = async (req, res, next) => {
   const errors = validationResult(req);
-  
+
   if(!errors.isEmpty()) {
     return res.status(422).render('auth/signup', { pageTitle: 'Sign Up to Travel Guides', errorMessage: errors.array()[0].msg, userInput: { email: req.body.user.email } });
   }
@@ -60,15 +60,15 @@ exports.postSignup = async (req, res, next) => {
     user.password = await bcrypt.hash(req.body.password.pass1, 12);
     await User.create(user);
     res.redirect('/');
-    // return transporter.sendMail({
-    //   to: req.body.email,
-    //   from: 'info@travelguides.com',
-    //   subject: 'Registration Successful',
-    //   html: '<h1>You are in bro!</h1>'
-    // });
+    return transporter.sendMail({
+      to: req.body.email,
+      from: 'info@travelguides.com',
+      subject: 'Registration Successful',
+      html: '<h1>You are in bro!</h1>'
+    });
   } catch(err) {
     console.log(err);
-    next(err);
+    return next(err);
   }
 }
 
@@ -85,7 +85,8 @@ exports.postResetPassword = async (req, res, next) => {
         return res.redirect('/reset-password');
       }
       const token = buffer.toString('hex');
-      const foundUser = await User.findOne({ email: req.body.email });
+      const userEmail = req.body.email;
+      const foundUser = await User.findOne({ email: userEmail });
       if(!foundUser) {
         req.flash('error', 'Email not found.');
         return res.redirect('/reset-password');
@@ -95,7 +96,7 @@ exports.postResetPassword = async (req, res, next) => {
       await foundUser.save();
       res.redirect('/');
       return transporter.sendMail({
-        to: req.body.email,
+        to: userEmail,
         from: 'info@travelguides.com',
         subject: 'Password Reset',
         html: `<p>Password reset request: Clik <a href="http://localhost:3000/new-password/${token}">this link</a> to proceed.</p>`
@@ -103,7 +104,7 @@ exports.postResetPassword = async (req, res, next) => {
     });
   } catch(err) {
     console.log(err);
-    next(err);
+    return next(err);
   }
 }
 
@@ -115,7 +116,7 @@ exports.getNewPassword = async (req, res, next) => {
     (message.length > 0) ? message = message[0] : message = null;
     res.render(`auth/newpass`, { pageTitle: 'New Password', errorMessage: message, userId: foundUser._id.toString(), passwordToken: token });
   } catch(err) {
-    next(err);
+    return next(err);
   }
 }
 
@@ -135,7 +136,7 @@ exports.postNewPassword = async (req, res, next) => {
     await foundUser.save();
     return res.redirect('/login');
   } catch(err) {
-    next(err);
+    return next(err);
   }
 }
 

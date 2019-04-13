@@ -6,6 +6,6 @@ exports.postRating = async (req, res, next) => {
     res.redirect('back');
   } catch(err) {
     console.log(err);
-    next(err);
+    return next(err);
   }
 }

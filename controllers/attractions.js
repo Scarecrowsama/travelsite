@@ -7,7 +7,7 @@ exports.attractions_new = async (req, res, next) => {
     const foundCity = await City.findById(req.params.cityId);
     res.render('attractions/new', { foundCity: foundCity, pageTitle: `Add new Attraction to ${foundCity.name}` });
   } catch(err) {
-    next(err);
+    return next(err);
   }
 }
 
@@ -20,6 +20,6 @@ exports.attractions_create = async (req, res, next) => {
     foundCity.save();
     return res.redirect('back');
   } catch(err) {
-    next(err);
+    return next(err);
   }
 }

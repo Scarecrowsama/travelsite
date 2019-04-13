@@ -6,6 +6,7 @@ const session           = require('express-session');
 const mongoSession      = require('connect-mongodb-session')(session);
 const csrf              = require('csurf');
 const flashMessage      = require('connect-flash');
+const User              = require('./models/user');
 const app               = express();
 
 const MONGODB_URI       = 'mongodb://localhost/travelguides';
@@ -32,6 +33,18 @@ app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
   res.locals.csrfToken = req.csrfToken();
   next();
+});
+
+app.use(async (req, res, next) => {
+  try {
+    if(!req.session.user) { return next(); }
+    const loggedInUser = await User.findById(req.session.user._id);
+    if(!loggedInUser) { return next(); }
+    req.user = loggedInUser;
+    next();
+  } catch(err) {
+    next(err);
+  }
 });
 
 app.use(require('./routes/index'));

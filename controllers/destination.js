@@ -18,7 +18,7 @@ exports.destinations_get_all = async (req, res, next) => {
   } catch(err) {
     err.status = 404;
     err.message = 'There are no destinations available.';
-    next(err);
+    return next(err);
   }
 }
 
@@ -37,7 +37,7 @@ exports.destinations_show = async (req, res, next) => {
   } catch(err) {
     err.status = 404;
     err.message = 'The requested destination does not exist.';
-    next(err);
+    return next(err);
   }
 }
 
@@ -55,7 +55,7 @@ exports.destinations_create = async (req, res, next) => {
     foundRegion.save();
     res.redirect('/destinations');
   } catch(err) {
-    next(err);
+    return next(err);
   }
 }
 

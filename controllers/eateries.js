@@ -20,6 +20,6 @@ exports.eateries_create = async (req, res, next) => {
     foundCity.save();
     return res.redirect('back');
   } catch(err) {
-    next(err);
+    return next(err);
   }
 }
