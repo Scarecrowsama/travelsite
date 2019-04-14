@@ -520,6 +520,9 @@ h1, h2, h3, h4, h5, h6 {
 .white-link {
   color: #fff; }
 
+.brand-icon {
+  color: #F24333; }
+
 .secondary-link {
   color: #fff; }
 
@@ -542,7 +545,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 13vh; }
 
 .mt-md {
-  margin-top: 9vh; }
+  margin-top: 7vh; }
 
 .underlined {
   position: relative;
@@ -557,6 +560,18 @@ h1, h2, h3, h4, h5, h6 {
     bottom: -3rem;
     left: 50%;
     transform: translateX(-50%); }
+
+.capitalize {
+  text-transform: capitalize; }
+
+.uppercase {
+  text-transform: uppercase; }
+
+.bold {
+  font-weight: bold; }
+
+.justified {
+  text-align: justify; }
 
 .navbar {
   background-color: #f9fbfb;
@@ -802,6 +817,28 @@ h1, h2, h3, h4, h5, h6 {
   bottom: -3rem;
   left: 50%;
   transform: translateX(-50%); }
+
+.destination__basics {
+  margin: 2rem 0; }
+  .destination__basics--list {
+    display: flex;
+    justify-content: space-between; }
+
+.destination__tops {
+  margin: 5rem 0;
+  display: flex;
+  flex-wrap: wrap; }
+  .destination__tops > div {
+    flex: 1 1 25%;
+    padding: 0 1rem; }
+  .destination__tops--image {
+    border-radius: .5rem;
+    max-width: 100%; }
+  .destination__tops__emergency-numbers--title {
+    margin-bottom: 2rem; }
+  .destination__tops h3 {
+    text-align: center;
+    margin-bottom: 3rem; }
 
 .background {
   background: url("https://source.unsplash.com/random/1600x900/?phiphi") no-repeat center !important;

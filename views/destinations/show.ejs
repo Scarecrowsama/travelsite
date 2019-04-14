@@ -16,17 +16,112 @@
 
     <h1 class="underlined underlined--lg"><%= foundDestination.name %></h1>
 
-    <h3>Top 5 Cities in <%= foundDestination.name %></h3>
+    <p class="destination__intro justified">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis repudiandae illum cupiditate vel, obcaecati atque dolorum, neque perferendis tempora, aliquid hic sunt soluta amet reiciendis? Fugiat unde eum ad doloribus at in, perferendis magni veniam? Nemo officia magnam adipisci sapiente possimus fugiat autem labore. Delectus ea perferendis quasi minus natus.</p>
 
-    <ul>
-      <% foundDestination.cities.slice(0, 5).forEach(city => { %>
-        <li><a href="<%= foundDestination._id %>/cities/<%= city._id %>"><%= city.name %></a></li>
-      <% }) %>
-    </ul>
+    <div class="destination__basics">
+      <ul class="destination__basics--list">
+        <li class="destination__basics--item">
+            <i class="fas fa-globe brand-icon"></i>&nbsp;<span class="bold">Language:</span> <span class="capitalize"><%= foundDestination.language %></span>
+        </li>
+        <li class="destination__basics--item">
+            <i class="fas fa-dollar-sign brand-icon"></i>&nbsp;<span class="bold">Currency:</span> <span class="capitalize"><%= foundDestination.currency.name %></span> <span class="uppercase">(<%= foundDestination.currency.acronym %>)</span>
+        </li>
+        <li class="destination__basics--item">
+            <i class="fas fa-bolt brand-icon"></i>&nbsp;<span class="bold">Voltage/Frequency:</span> <%= foundDestination.electrics.voltage %>V / <%= foundDestination.electrics.frequency %>Hz
+        </li>
+        <li class="destination__basics--item">
+            <i class="fas fa-plug brand-icon"></i>&nbsp;<span class="bold">Plug Type:</span> <span class="capitalize"><a href="https://www.worldstandards.eu/electricity/plugs-and-sockets/" target="_blank"><%= foundDestination.electrics.plug %></span></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="destination__tops">
+      <div class="destination__tops--cities">
+        <h3>Top 5 Cities</h3>
+
+        <ul>
+          <% foundDestination.cities.slice(0, 5).forEach((city, index) => { %>
+            <li>
+              <a href="<%= foundDestination._id %>/cities/<%= city._id %>">
+                <img src="https://source.unsplash.com/random/300x150/?sig=<%= index %>&thailand" alt="" class="destination__tops--image">
+                <p><%= city.name %></p>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+      <div class="destination__tops--attractions">
+        <h3>Top 5 Attractions</h3>
+
+        <ul>
+          <% foundDestination.cities.slice(0, 5).forEach((city, index) => { %>
+            <li>
+              <a href="<%= foundDestination._id %>/cities/<%= city._id %>">
+                <img src="https://source.unsplash.com/random/300x150/?sig=<%= index %>&attraction" alt="" class="destination__tops--image">
+                <p><%= city.name %></p>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+
+      <div class="destination__tops--shopping">
+        <h3>Top 5 Malls</h3>
+  
+        <ul>
+          <% foundDestination.cities.slice(0, 5).forEach((city, index) => { %>
+            <li>
+              <a href="<%= foundDestination._id %>/cities/<%= city._id %>">
+                <img src="https://source.unsplash.com/random/300x150/?sig=<%= index %>&mall" alt="" class="destination__tops--image">
+                <p><%= city.name %></p>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+
+        <div class="destination__tops--markets">
+          <h3>Top 5 Markets</h3>
+  
+          <ul>
+            <% foundDestination.cities.slice(0, 5).forEach((city, index) => { %>
+              <li>
+                <a href="<%= foundDestination._id %>/cities/<%= city._id %>">
+                  <img src="https://source.unsplash.com/random/300x150/?sig=<%= index %>&market" alt="" class="destination__tops--image">
+                  <p><%= city.name %></p>
+                </a>
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+    </div>
+
+    <div class="destination__important">
+      <h3 class="underlined underlined--lg">Important Information</h3>
+
+      <div class="destination__emergency-numbers">
+        <h4 class="destination__emergency-numbers--title"><i class="fas fa-h-square"></i>&nbsp;Emergency Numbers</h4>
+        <ul>
+          <% foundDestination.emergency.forEach(number => { %>
+            <li class="capitalize">
+              &ndash;&nbsp;<span class="bold"><%= number.description %></span>: <%= number.number %>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+
+      <div class="destination__visa">
+        <h4 class="destination__visa--title"><i class="fas fa-passport"></i>&nbsp;Visa Information</h4>
+        <p class="destination__visa--details justified">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, dicta ut. Vero tenetur minus doloremque commodi aut incidunt, et ipsa illo facilis! Ducimus, corporis impedit! Quas adipisci est recusandae ducimus sit porro fuga? Magni reiciendis in inventore libero hic quaerat maiores, deserunt earum fuga veritatis iure necessitatibus odit velit nisi ipsa commodi? Deserunt quos, placeat illum quia eaque tenetur soluta quisquam quaerat molestiae quis qui dignissimos, possimus expedita eum dolor saepe, beatae sed. Veritatis in minima ad, maxime voluptatum iste, suscipit nulla explicabo fugit beatae, numquam pariatur. Quam, in aperiam culpa officia porro saepe magni cum beatae minima, repellat iste?</p>
+      </div>
+    </div><!-- Main div-->
+    
     <% if(isAuthenticated) { %>
-      <a class="btn btn-primary" href="/destinations/<%= foundDestination._id %>/cities/new">Add a new City to <%= foundDestination.name %></a>
+      <br><a class="btn btn-primary" href="/destinations/<%= foundDestination._id %>/cities/new">Add a new City to <%= foundDestination.name %></a>
     <% } %>
 
   </div>
+
+
 
 <%- include('../partials/footer'); %>

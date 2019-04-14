@@ -31,7 +31,7 @@ exports.destinations_new = (req, res) => {
 exports.destinations_show = async (req, res, next) => {
   try {
     const foundDestination = await Destination.findById(req.params.id)
-    .select('name flag region cities')
+    .select('name flag region cities language currency electrics emergency')
     .populate('cities');
     res.render('destinations/show', { foundDestination: foundDestination, pageTitle: `${foundDestination.name} - Travel Guides` });
   } catch(err) {

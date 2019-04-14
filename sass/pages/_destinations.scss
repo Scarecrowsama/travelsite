@@ -6,6 +6,66 @@
   }
 }
 
+.destination {
+
+  &__intro {
+    
+  }
+
+  &__basics {
+    margin: 2rem 0;
+
+    &--list {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__tops {
+    margin: 5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div {
+      flex: 1 1 25%;
+      padding: 0 1rem;
+    }
+    
+    // &--cities {
+    
+    // }
+
+    // &--attractions {
+    
+    // }
+
+    // &--shopping {
+    
+    // }
+
+    // &--markets {
+    
+    // }
+
+    &--image {
+      border-radius: .5rem;
+      max-width: 100%;
+    }
+
+    &__emergency-numbers {
+
+      &--title {
+        margin-bottom: 2rem;
+      }
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+  }
+}
+
 .background {
   background: url('https://source.unsplash.com/random/1600x900/?phiphi') no-repeat center !important;
   background-size: cover;

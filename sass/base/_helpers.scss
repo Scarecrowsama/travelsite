@@ -59,6 +59,10 @@
   color: #fff;
 }
 
+.brand-icon {
+  color: $brand;
+}
+
 .secondary-link {
   color: $secondary-link-color;
 }
@@ -88,7 +92,7 @@
 }
 
 .mt-md {
-  margin-top: 9vh;
+  margin-top: 7vh;
 }
 
 .underlined {
@@ -99,4 +103,20 @@
   &--lg {
     @include orange-horizontal-line(80%);
   }
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.justified {
+  text-align: justify;
 }

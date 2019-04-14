@@ -3,11 +3,21 @@ const mongoose = require('mongoose');
 const destination = new mongoose.Schema({
   name: { type: String, required: true }, 
   flag: String,
-  creationDate: { type: Date, default: Date.now },
+  language: { type: String },
+  currency: { 
+    name: { type: String },
+    acronym: { type: String },
+  },
+  electrics: {
+    voltage: { type: Number },
+    frequency: { type: Number },
+    plug: { type: String },
+  },
+  emergency: [{ description: { type: String }, number: { type: Number } }],
   region: { type: mongoose.Schema.Types.ObjectId, ref: 'Region' },
   cities: [{ type: mongoose.Schema.Types.ObjectId, ref: 'City' }],
   rating: { type: mongoose.Schema.Types.ObjectId, ref: 'Rating' }
-}, {strict: true});
+}, { strict: true,  timestamps: true });
 
 module.exports = mongoose.model('Destination', destination);
 
