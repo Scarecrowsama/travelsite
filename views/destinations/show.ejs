@@ -39,12 +39,12 @@
       <div class="destination__tops--cities">
         <h3>Top 5 Cities</h3>
 
-        <ul>
+        <ul class="two-by-three-grid">
           <% foundDestination.cities.slice(0, 5).forEach((city, index) => { %>
-            <li>
-              <a href="<%= foundDestination._id %>/cities/<%= city._id %>">
-                <img src="https://source.unsplash.com/random/300x150/?sig=<%= index %>&thailand" alt="" class="destination__tops--image">
-                <p><%= city.name %></p>
+            <li class="grid-element--<%= index + 1 %>">
+              <a href="<%= foundDestination._id %>/cities/<%= city._id %>" class="grid-link">
+                <img src="https://source.unsplash.com/random/600x400/?sig=<%= index %>&thailand" alt="" class="destination__tops--image">
+                <p class="grid-link__text"><%= city.name %></p>
               </a>
             </li>
           <% }) %>
@@ -53,12 +53,12 @@
       <div class="destination__tops--attractions">
         <h3>Top 5 Attractions</h3>
 
-        <ul>
+        <ul class="two-by-three-grid">
           <% foundDestination.cities.slice(0, 5).forEach((city, index) => { %>
-            <li>
-              <a href="<%= foundDestination._id %>/cities/<%= city._id %>">
-                <img src="https://source.unsplash.com/random/300x150/?sig=<%= index %>&attraction" alt="" class="destination__tops--image">
-                <p><%= city.name %></p>
+            <li class="grid-element--<%= index + 1 %>">
+              <a href="<%= foundDestination._id %>/cities/<%= city._id %>" class="grid-link">
+                <img src="https://source.unsplash.com/random/600x400/?sig=<%= index %>&attraction" alt="" class="destination__tops--image">
+                <p class="grid-link__text"><%= city.name %></p>
               </a>
             </li>
           <% }) %>
@@ -68,12 +68,12 @@
       <div class="destination__tops--shopping">
         <h3>Top 5 Malls</h3>
   
-        <ul>
+        <ul class="two-by-three-grid">
           <% foundDestination.cities.slice(0, 5).forEach((city, index) => { %>
-            <li>
-              <a href="<%= foundDestination._id %>/cities/<%= city._id %>">
-                <img src="https://source.unsplash.com/random/300x150/?sig=<%= index %>&mall" alt="" class="destination__tops--image">
-                <p><%= city.name %></p>
+            <li class="grid-element--<%= index + 1 %>">
+              <a href="<%= foundDestination._id %>/cities/<%= city._id %>" class="grid-link">
+                <img src="https://source.unsplash.com/random/600x400/?sig=<%= index %>&mall" alt="" class="destination__tops--image">
+                <p class="grid-link__text"><%= city.name %></p>
               </a>
             </li>
           <% }) %>
@@ -83,12 +83,12 @@
         <div class="destination__tops--markets">
           <h3>Top 5 Markets</h3>
   
-          <ul>
+          <ul class="two-by-three-grid">
             <% foundDestination.cities.slice(0, 5).forEach((city, index) => { %>
-              <li>
-                <a href="<%= foundDestination._id %>/cities/<%= city._id %>">
-                  <img src="https://source.unsplash.com/random/300x150/?sig=<%= index %>&market" alt="" class="destination__tops--image">
-                  <p><%= city.name %></p>
+              <li class="grid-element--<%= index + 1 %>">
+                <a href="<%= foundDestination._id %>/cities/<%= city._id %>" class="grid-link">
+                  <img src="https://source.unsplash.com/random/600x400/?sig=<%= index %>&market" alt="" class="destination__tops--image">
+                  <p class="grid-link__text"><%= city.name %></p>
                 </a>
               </li>
             <% }) %>
@@ -99,9 +99,9 @@
     <div class="destination__important">
       <h3 class="underlined underlined--lg">Important Information</h3>
 
-      <div class="destination__emergency-numbers">
-        <h4 class="destination__emergency-numbers--title"><i class="fas fa-h-square"></i>&nbsp;Emergency Numbers</h4>
-        <ul>
+      <div class="destination__emergency-numbers mb-sm">
+        <h4 class="destination__emergency-numbers"><i class="fas fa-h-square"></i>&nbsp;Emergency Numbers</h4>
+        <ul class="mt-sm">
           <% foundDestination.emergency.forEach(number => { %>
             <li class="capitalize">
               &ndash;&nbsp;<span class="bold"><%= number.description %></span>: <%= number.number %>
@@ -112,7 +112,8 @@
 
       <div class="destination__visa">
         <h4 class="destination__visa--title"><i class="fas fa-passport"></i>&nbsp;Visa Information</h4>
-        <p class="destination__visa--details justified">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, dicta ut. Vero tenetur minus doloremque commodi aut incidunt, et ipsa illo facilis! Ducimus, corporis impedit! Quas adipisci est recusandae ducimus sit porro fuga? Magni reiciendis in inventore libero hic quaerat maiores, deserunt earum fuga veritatis iure necessitatibus odit velit nisi ipsa commodi? Deserunt quos, placeat illum quia eaque tenetur soluta quisquam quaerat molestiae quis qui dignissimos, possimus expedita eum dolor saepe, beatae sed. Veritatis in minima ad, maxime voluptatum iste, suscipit nulla explicabo fugit beatae, numquam pariatur. Quam, in aperiam culpa officia porro saepe magni cum beatae minima, repellat iste?</p>
+
+        <p class="destination__visa--details justified mt-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, dicta ut. Vero tenetur minus doloremque commodi aut incidunt, et ipsa illo facilis! Ducimus, corporis impedit! Quas adipisci est recusandae ducimus sit porro fuga? Magni reiciendis in inventore libero hic quaerat maiores, deserunt earum fuga veritatis iure necessitatibus odit velit nisi ipsa commodi? Deserunt quos, placeat illum quia eaque tenetur soluta quisquam quaerat molestiae quis qui dignissimos, possimus expedita eum dolor saepe, beatae sed. Veritatis in minima ad, maxime voluptatum iste, suscipit nulla explicabo fugit beatae, numquam pariatur. Quam, in aperiam culpa officia porro saepe magni cum beatae minima, repellat iste?</p>
       </div>
     </div><!-- Main div-->
     

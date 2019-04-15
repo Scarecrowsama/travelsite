@@ -8,10 +8,6 @@
 
 .destination {
 
-  &__intro {
-    
-  }
-
   &__basics {
     margin: 2rem 0;
 
@@ -23,13 +19,13 @@
 
   &__tops {
     margin: 5rem 0;
-    display: flex;
-    flex-wrap: wrap;
+    // display: flex;
+    // flex-wrap: wrap;
 
-    & > div {
-      flex: 1 1 25%;
-      padding: 0 1rem;
-    }
+    // & > div {
+    //   flex: 1 1 25%;
+    //   padding: 0 1rem;
+    // }
     
     // &--cities {
     
@@ -49,14 +45,9 @@
 
     &--image {
       border-radius: .5rem;
+      width: 100%;
       max-width: 100%;
-    }
-
-    &__emergency-numbers {
-
-      &--title {
-        margin-bottom: 2rem;
-      }
+      max-height: 100%;
     }
 
     h3 {
