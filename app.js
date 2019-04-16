@@ -9,7 +9,7 @@ const flashMessage      = require('connect-flash');
 const User              = require('./models/user');
 const app               = express();
 
-const MONGODB_URI       = 'mongodb://localhost/travelguides';
+const MONGODB_URI       = process.env.DATABASEURL;
 const storedSession     = new mongoSession({
   uri: MONGODB_URI,
   collection: 'sessions'
@@ -17,7 +17,7 @@ const storedSession     = new mongoSession({
 
 const csrfProtection    = csrf();
 
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 mongoose.set('debug', true); //Shows queries done by mongoose.
 app.disable('x-powered-by'); //Blocks header for containing information about the server.
 app.set('port', process.env.PORT || 3000);
