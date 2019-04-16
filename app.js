@@ -17,7 +17,7 @@ const storedSession     = new mongoSession({
 
 const csrfProtection    = csrf();
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
 mongoose.set('debug', true); //Shows queries done by mongoose.
 app.disable('x-powered-by'); //Blocks header for containing information about the server.
 app.set('port', process.env.PORT || 3000);
