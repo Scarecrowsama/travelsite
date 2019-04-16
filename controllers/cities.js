@@ -9,7 +9,7 @@ exports.cities_view_all = (req, res, next) => {
 exports.cities_new = (req, res, next) => {
   Destination.findById(req.params.id)
   .select('_id name')
-  .then(foundDestination => res.render('cities/new', {foundDestination: foundDestination, pageTitle: 'Add New City'}))
+  .then(foundDestination => res.render('cities/new', { foundDestination: foundDestination, pageTitle: 'Add New City' }))
   .catch(err => res.redirect('back'));
 }
 
@@ -31,8 +31,8 @@ exports.cities_create = async (req, res, next) => {
 exports.cities_show_one = async (req, res, next) => {
   try {
     const foundCity = await City.findById(req.params.cityId)
-    .select('name country')
-    // .populate('attractions');
+    .select('name country attractions')
+    .populate('attractions');
     res.render(`cities/show`, { foundCity: foundCity, pageTitle: `${foundCity.name} City Guide - Travel Guides` });
 
   } catch(err) {
