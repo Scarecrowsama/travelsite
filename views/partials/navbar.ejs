@@ -4,7 +4,7 @@
   <ul class="navbar__navigation">
     <li class="navbar__item"><a href="/" class="navbar__link">Home</a></li>
     <li class="navbar__item"><a href="/destinations" class="navbar__link">Destinations</a></li>
-    <% if(isAuthenticated) { %>
+    <% if(isAuthenticated && userLoggedIn === 'tanausu_sa@hotmail.com') { %>
       <li class="navbar__item"><a href="/destinations/new" class="navbar__link">Add New Destination</a></li>
     <% } %>
   </ul>

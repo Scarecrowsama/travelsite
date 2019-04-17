@@ -70,7 +70,7 @@
             </ul> 
         </div>
 
-    <% if(isAuthenticated) { %>
+    <% if(isAuthenticated && userLoggedIn === 'tanausu_sa@hotmail.com') { %>
       <div class="actions mt-sm">
         <a class="" href="/destinations/<%= foundCity.country.id %>/cities/<%= foundCity._id %>/attractions/new">Add a new Attraction to <%= foundCity.name %></a><br>
         <a class="" href="/destinations/<%= foundCity.country.id %>/cities/<%= foundCity._id %>/eateries/new">Add a new Eatery to <%= foundCity.name %></a>

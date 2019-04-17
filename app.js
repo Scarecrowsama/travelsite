@@ -32,6 +32,7 @@ app.use(flashMessage());
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
   res.locals.csrfToken = req.csrfToken();
+  res.locals.userLoggedIn = (req.session.user) ? req.session.user.email : '';
   next();
 });
 

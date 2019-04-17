@@ -117,7 +117,7 @@
       </div>
     </div><!-- Main div-->
     
-    <% if(isAuthenticated) { %>
+    <% if(isAuthenticated && userLoggedIn === 'tanausu_sa@hotmail.com') { %>
       <br><a class="btn btn-primary" href="/destinations/<%= foundDestination._id %>/cities/new">Add a new City to <%= foundDestination.name %></a>
     <% } %>
 
