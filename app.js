@@ -68,3 +68,5 @@ app.use((responseError, req, res, next) => {
 });
 
 app.listen(app.get('port'), () => console.log('Server working.'));
+
+//When deploying to Heroku I must replace the database url to the process.env.DATABASEURL and the package.json start script.
