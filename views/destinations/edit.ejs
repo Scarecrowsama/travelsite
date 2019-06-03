@@ -8,7 +8,7 @@
 
   <%- include('../partials/navbar'); %>
 
-  <div class="container basicFormWidth">
+  <div class="container basicFormWidth mt-lg">
     <h1 class="display-4">Edit -
       <%= foundDestination.name %>
     </h1>
@@ -23,8 +23,26 @@
         <input class="form-control" type="text" name="destination[flag]" value="<%= foundDestination.flag %>">
       </div>
       <div class="form-group">
+        <label for="destination[language]">Language</label>
+        <input class="form-control" type="text" name="destination[language]" value="<%= foundDestination.language %>">
+      </div>
+      <div class="form-group">
+        <label for="currency[name]">Currency</label>
+        <input type="text" name="currency[name]" value="<%= foundDestination.currency.name %>">
+        <label for="currency[acronym]">Acronym</label>
+        <input type="text" name="currency[acronym]" value="<%= foundDestination.currency.acronym %>" maxlength="3">
+      </div>
+      <div class="form-group">
+        <label for="electrics[voltage]">Voltage</label>
+        <input type="number" name="electrics[voltage]" value="<%= foundDestination.electrics.voltage %>">
+        <label for="electrics[frequency]">Frequency</label>
+        <input type="number" name="electrics[frequency]" value="<%= foundDestination.electrics.frequency %>">
+        <label for="electrics[plug]">Plug</label>
+        <input type="text" name="electrics[plug]" value="<%= foundDestination.electrics.plug %>">
+      </div>
+      <div class="form-group">
         <label for="destination[region]">Region</label>
-        <select class="form-control mb-4" name="region[name]]">
+        <select class="form-control mb-4" name="region[name]">
           <option selected disabled hidden>Choose a region</option>
           <% allRegions.forEach(region => { %>
             <option value="<%= region.name %>"><%= region.name %></option>

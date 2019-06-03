@@ -24,7 +24,7 @@ exports.destinations_get_all = async (req, res, next) => {
 
 exports.destinations_new = (req, res) => {
   Regions.find({})
-  .then(allRegions => res.render('destinations/new', {allRegions: allRegions, pageTitle: ''}))
+  .then(allRegions => res.render('destinations/new', { allRegions: allRegions, pageTitle: '' }))
   .catch(err => res.redirect('/'));
 }
 
@@ -43,6 +43,9 @@ exports.destinations_show = async (req, res, next) => {
 
 exports.destinations_create = async (req, res, next) => {
   try {
+    //Attach to the destination body the electrics and currency information.
+    req.body.destination.currency = req.body.currency;
+    req.body.destination.electrics = req.body.electrics;
     //Create new destination.
     const newDestination = await Destination.create(req.body.destination);
     //Find destination's region.
@@ -59,15 +62,22 @@ exports.destinations_create = async (req, res, next) => {
   }
 }
 
-exports.destinations_edit = (req, res) => {
-  Destination.findById(req.params.id)
+exports.destinations_edit = async (req, res) => {
+  try {
+    const allRegions = await Regions.find({});
+    Destination.findById(req.params.id)
   .then(foundDestination => {
-    res.render('destinations/edit', {foundDestination: foundDestination, pageTitle: `Edit ${foundDestination.name}`});
+    res.render('destinations/edit', { foundDestination: foundDestination, allRegions: allRegions, pageTitle: `Edit ${foundDestination.name}` });
   })
   .catch(err => res.redirect('back'));
+  } catch(err) {
+    return next(err);
+  }
 }
 
 exports.destinations_update = (req, res) => {
+  req.body.destination.currency = req.body.currency;
+  req.body.destination.electrics = req.body.electrics;
   Destination.findByIdAndUpdate(req.params.id, req.body.destination)
   .then(updatedDestination => res.redirect('/destinations/' + updatedAlbum._id))
   .catch(err => res.redirect('/destinations'));

@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 
 const destination = new mongoose.Schema({

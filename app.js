@@ -9,7 +9,7 @@ const flashMessage      = require('connect-flash');
 const User              = require('./models/user');
 const app               = express();
 
-const MONGODB_URI       = process.env.DATABASEURL;
+const MONGODB_URI       = 'mongodb://localhost/travelguides';
 const storedSession     = new mongoSession({
   uri: MONGODB_URI,
   collection: 'sessions'
