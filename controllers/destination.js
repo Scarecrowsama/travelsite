@@ -55,7 +55,7 @@ exports.destinations_create = async (req, res, next) => {
     newDestination.save();
     //Add the new destination's id to the region's countries array and then save it.
     foundRegion.countries.push(newDestination._id);
-    foundRegion.save();
+    await foundRegion.save();
     res.redirect('/destinations');
   } catch(err) {
     return next(err);

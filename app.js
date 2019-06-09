@@ -9,6 +9,8 @@ const flashMessage      = require('connect-flash');
 const User              = require('./models/user');
 const app               = express();
 
+//Configurations.
+
 const MONGODB_URI       = process.env.DATABASEURL;
 const storedSession     = new mongoSession({
   uri: MONGODB_URI,
@@ -48,12 +50,16 @@ app.use(async (req, res, next) => {
   }
 });
 
+//Importing routes.
+
 app.use(require('./routes/index'));
 app.use('/destinations', require('./routes/destinations'));
 app.use('/destinations', require('./routes/cities'));
 app.use('/destinations', require('./routes/attractions'));
 app.use('/destinations', require('./routes/eateries'));
 app.use(require('./routes/auth'));
+
+//Error handling.
 
 app.use((req, res, next) => {
   const error = new Error('The requested page does not exist.');
@@ -69,4 +75,5 @@ app.use((responseError, req, res, next) => {
 
 app.listen(app.get('port'), () => console.log('Server working.'));
 
-//When deploying to Heroku I must replace the database url to the process.env.DATABASEURL and the package.json start script.
+//When deploying to Heroku I must replace the database url to process.env.DATABASEURL and the package.json start script.
+//Add food services to guides, decide where.

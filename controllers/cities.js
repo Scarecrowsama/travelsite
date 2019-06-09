@@ -21,7 +21,7 @@ exports.cities_create = async (req, res, next) => {
     foundDestination.save();
     newCity.country.id = req.body.country.id;
     newCity.country.name = foundDestination.name;
-    newCity.save();
+    await newCity.save();
     res.redirect(`/destinations/${newCity.country.id}`);
   } catch(err) {
     next(err);

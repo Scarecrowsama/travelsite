@@ -14,19 +14,41 @@
 
       <form action="/destinations/<%= foundCity.country.id %>/cities/<%= foundCity._id %>/eateries/new" method="POST">
         <div class="form-group">
-            <label for="eatery[name]">Name:</label>
-            <input class="form-control" type="text" name="eatery[name]" placeholder="Eatery name..."><br>
-            <label for="eatery[cuisine]">Cuisine:</label>
-            <input name="eatery[cuisine]" type="text" placeholder="Eatery cuisine..."><br>
-            <label for="eatery[typeOfPlace]">Type:</label>
-            <select name="eatery[typeOfPlace]">
-              <option selected disabled hidden>Choose a Type</option>
-              <option value="Restaurant">Restaurant</option>
-              <option value="Market">Market</option>
-              <option value="Street&nbsp;Food">Street Food</option>
-            </select>
-            <input type="hidden" name=city[id] value="<%= foundCity._id %>">
-            <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+          <label for="eatery[name]">Name:</label>
+          <input class="form-control" type="text" name="eatery[name]" placeholder="Eatery name...">
+        </div>
+        <div class="form-group">
+          <label for="eatery[cuisine]">Cuisine:</label>
+          <input name="eatery[cuisine]" type="text" placeholder="Eatery cuisine...">
+        </div>
+        <div class="form-group">
+          <label for="eatery[priceRange]">Price Range:</label>
+          <input name="eatery[priceRange]" type="text" placeholder="Eatery Price Range...">
+        </div>
+        <div class="form-group">
+          <label for="eatery[website]">Website:</label>
+          <input name="eatery[website]" type="text" placeholder="Eatery Website...">
+        </div>
+        <div class="form-group">
+          <label for="eatery[typeOfPlace]">Type:</label>
+          <select name="eatery[typeOfPlace]">
+            <option selected disabled hidden>Choose a Type</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Market">Market</option>
+            <option value="Street&nbsp;Food">Street Food</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="location[latitude]">Latitude:</label>
+          <input class="form-control" type="text" name="location[latitude]" placeholder="Location Latitude...">
+          <label for="location[longitude]">Longitude:</label>
+          <input class="form-control" type="text" name="location[longitude]" placeholder="Location Longitude...">
+          <label for="location[address]">Address:</label>
+          <input class="form-control" type="text" name="location[address]" placeholder="Location address...">
+        </div>
+        <div class="form-group">
+          <input type="hidden" name=city[id] value="<%= foundCity._id %>">
+          <input type="hidden" value="<%= csrfToken %>" name="_csrf">
         </div>
         <button class="btn btn-primary btn-block" type="submit">Add</button>
       </form>

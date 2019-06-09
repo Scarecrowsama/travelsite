@@ -15,9 +15,10 @@ exports.eateries_create = async (req, res, next) => {
   try {
     const foundCity = await City.findById(req.body.city.id).select('name eateries');
     req.body.eatery.city = { id: req.body.city.id, name: foundCity.name };
+    req.body.eatery.location = { latitude: req.body.location.latitude, longitude: req.body.location.longitude, address: req.body.location.address }
     const createdEatery = await Eatery.create(req.body.eatery);
     foundCity.eateries.push(createdEatery._id);
-    foundCity.save();
+    await foundCity.save();
     return res.redirect('back');
   } catch(err) {
     return next(err);

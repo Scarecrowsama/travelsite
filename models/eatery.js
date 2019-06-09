@@ -7,8 +7,8 @@ const eatery = new mongoose.Schema({
   priceRange: { type: String },
   website: { type: String },
   location: {
-    altitude: String,
     latitude: String,
+    longitude: String,
     address: String
   },
   openingTimes: {

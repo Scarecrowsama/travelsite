@@ -10,8 +10,8 @@ const attraction = new mongoose.Schema({
   //   required: true 
   // },
   location: {
-    altitude: String,
     latitude: String,
+    longitude: String,
     address: String
   },
   openingTimes: {
